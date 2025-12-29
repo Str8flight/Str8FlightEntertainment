@@ -160,19 +160,22 @@ h2.videos-title {
   margin-bottom: 20px; /* space between paragraphs */
 }
 
+/* ================= VIDEO GRID IMPROVEMENTS ================= */
 .videos {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 30px;
+  gap: 40px; /* more space between videos */
   margin-bottom: 60px;
 }
 
-@media (min-width: 600px) { .videos { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 900px) { .videos { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 900px) { 
+  .videos { grid-template-columns: repeat(2, 1fr); } /* 2 videos per row on larger screens */ 
+}
 
 .video-card {
-  background-color: #1a1a1a;
-  padding: 15px;
+  background-color: rgba(26,26,26,0.95); /* subtle transparent background */
+  backdrop-filter: blur(2px);
+  padding: 20px; /* increased padding */
   border-radius: 12px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 0 10px #FFA500;
@@ -308,6 +311,7 @@ footer a { color: #FFA500; text-decoration: underline; }
         <a href="https://www.instagram.com/str8flightentertainment/?hl=en">Instagram</a>,
         <a href="https://www.facebook.com/Str8flightentertainment/">Facebook</a>,
         <a href="https://www.youtube.com/@str8flightentertainment">YouTube</a>
+        <a href="https://music.apple.com/us/album/party-riddim-2020/1527887305">Apple Music</a>
       </li>
     </ul>
   </div>
