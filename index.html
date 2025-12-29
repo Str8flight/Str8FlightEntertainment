@@ -1,81 +1,305 @@
 <!DOCTYPE html>
-  footer a { color: #FFA500; text-decoration: underline; }
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Str8 Flight Entertainment | Belize Music & Culture</title>
 
-  /* Responsive: stack columns */
-  @media (max-width: 1024px) {
-    .page-container { flex-direction: column; }
-    .left, .right { flex: 1; }
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #0d0d0d;
+  color: #fff;
+  line-height: 1.7;
+}
+
+/* ================= MODERN HEADER ================= */
+.hero-header {
+  position: relative;
+  background: linear-gradient(135deg, #0b0b0b, #1a1a1a);
+  overflow: hidden;
+  padding-bottom: 80px;
+}
+
+.hero-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top right, rgba(255,165,0,0.35), transparent 45%),
+    radial-gradient(circle at bottom left, rgba(255,140,0,0.25), transparent 45%);
+  z-index: 0;
+}
+
+/* NAVBAR */
+.navbar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 60px;
+  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.4);
+  border-bottom: 1px solid rgba(255,165,0,0.2);
+}
+
+.logo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #FFA500, #FF8C00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(255,165,0,0.8);
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: #FFA500;
+  font-weight: 700;
+  text-decoration: none;
+  text-shadow: 0 0 5px #FFA500;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #FF4500;
+  text-shadow: 0 0 10px #FF4500, 0 0 20px #FFA500;
+}
+
+/* HERO TEXT */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 80px 60px 0;
+  text-align: center;
+  margin: auto;
+}
+
+.hero-content h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3em;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px #FFA500, 0 0 20px #FF8C00;
+}
+
+.hero-content p {
+  font-size: 1.2em;
+  max-width: 720px;
+  margin: auto;
+  text-shadow: 0 0 5px #fff;
+}
+
+/* ================= PAGE CONTENT ================= */
+.page-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1300px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.column {
+  background: #1a1a1a;
+  padding: 25px;
+  border-radius: 14px;
+  color: #e0e0e0;
+  line-height: 1.6;
+  box-shadow: 0 0 15px rgba(255,165,0,0.5), 0 0 30px rgba(255,140,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.column:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px #FFA500, 0 0 40px #FF8C00;
+}
+
+.left, .right { flex: 0 0 250px; }
+.center { flex: 1; }
+
+.column h2 {
+  color: #FFA500;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px #FFA500;
+}
+
+h2.videos-title {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 2em;
+  color: #FFA500;
+  text-shadow: 0 0 15px #FFA500;
+}
+
+.videos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+@media (min-width: 600px) { .videos { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px) { .videos { grid-template-columns: repeat(3, 1fr); } }
+
+.video-card {
+  background-color: #1a1a1a;
+  padding: 15px;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 10px #FFA500;
+}
+
+.video-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px #FFA500, 0 0 25px #FF8C00;
+}
+
+iframe {
+  width: 100%;
+  height: 220px;
+  border-radius: 8px;
+  border: none;
+}
+
+.video-title {
+  margin-top: 12px;
+  font-weight: 700;
+  font-size: 1.05em;
+  text-align: center;
+  text-shadow: 0 0 5px #FFA500;
+}
+
+/* ================= FOOTER ================= */
+footer {
+  background: #0d0d0d;
+  color: #FFA500;
+  text-align: center;
+  padding: 25px 10px;
+  font-size: 0.9em;
+  box-shadow: 0 -3px 8px rgba(255,165,0,0.3);
+  margin-top: 50px;
+  text-shadow: 0 0 5px #FFA500;
+}
+
+footer a { color: #FFA500; text-decoration: underline; }
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .page-container { flex-direction: column; }
+  .left, .right { flex: 1; }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
   }
+
+  .hero-content h1 {
+    font-size: 2.4em;
+  }
+}
 </style>
 </head>
+
 <body>
 
-<header>
-  <h1>Str8 Flight Entertainment</h1>
-  <p>Belize-based platform promoting original music, independent artists, and Caribbean creativity.</p>
-</header>
+<header class="hero-header">
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="privacy.html">Privacy Policy</a>
-</nav>
+  <nav class="navbar">
+    <div class="logo">STR8 FLIGHT</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="#videos">Videos</a>
+    </div>
+  </nav>
 
-<div class="page-container">
-  <!-- Left Column: About -->
-  <div class="column left">
-    <h2>About</h2>
-    <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>. The team promotes authentic music and Caribbean culture.</p>
-    <p>The Barrow brothers are actively involved in music production, recording, and creative direction, ensuring originality and quality.</p>
+  <div class="hero-content">
+    <h1>Str8 Flight Entertainment</h1>
+    <p>Belize-based platform promoting original music, independent artists, and Caribbean creativity.</p>
   </div>
 
-  <!-- Center Column: Videos -->
-  <div class="column center">
+</header>
+
+<div class="page-container">
+
+  <div class="column left">
+    <h2>About</h2>
+    <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>.</p>
+    <p>The Barrow brothers are actively involved in music production, recording, and creative direction.</p>
+  </div>
+
+  <div class="column center" id="videos">
     <h2 class="videos-title">Featured Music Videos</h2>
     <div class="videos">
+
       <div class="video-card">
         <iframe src="https://www.youtube.com/embed/0QwKo-mssxc" allowfullscreen></iframe>
         <div class="video-title">Perry da Artist - Bad Freak</div>
       </div>
+
       <div class="video-card">
         <iframe src="https://www.youtube.com/embed/pInxfriRH_w" allowfullscreen></iframe>
         <div class="video-title">Mr. Program - Rise-in-Glory (Prod. by Denton)</div>
       </div>
+
       <div class="video-card">
         <iframe src="https://www.youtube.com/embed/cXzqzTYxbsQ" allowfullscreen></iframe>
         <div class="video-title">Denton - Furious (RAW)</div>
       </div>
+
       <div class="video-card">
         <iframe src="https://www.youtube.com/embed/8E9zA7Bq1js" allowfullscreen></iframe>
         <div class="video-title">Quarantine - Cleon x Denton - 2020</div>
       </div>
+
       <div class="video-card">
         <iframe src="https://www.youtube.com/embed/QdFS99yYcDE" allowfullscreen></iframe>
         <div class="video-title">Denton - Wiser</div>
       </div>
+
       <div class="video-card">
         <iframe src="https://www.youtube.com/embed/pmSFR_ohjJk" allowfullscreen></iframe>
         <div class="video-title">Denton - PARRAT</div>
       </div>
+
       <div class="video-card">
         <iframe src="https://www.youtube.com/embed/WTW5qQPIgX0" allowfullscreen></iframe>
         <div class="video-title">Cocono Bwai - Wielo Wielo</div>
       </div>
+
     </div>
   </div>
 
-  <!-- Right Column: Contact -->
   <div class="column right">
     <h2>Contact</h2>
     <ul>
       <li>Email: <a href="mailto:str8flightentertainment@gmail.com">str8flightentertainment@gmail.com</a></li>
       <li>Phone: +501 615-0094</li>
-      <li>Follow us on social media:
+      <li>
+        Follow us:
         <a href="https://www.instagram.com/str8flightentertainment/?hl=en">Instagram</a>,
         <a href="https://www.facebook.com/Str8flightentertainment/">Facebook</a>,
         <a href="https://www.youtube.com/@str8flightentertainment">YouTube</a>
       </li>
     </ul>
   </div>
+
 </div>
 
 <footer>
