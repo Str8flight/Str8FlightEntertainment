@@ -20,7 +20,7 @@ body {
 .hero-header {
   position: relative;
   background: linear-gradient(135deg, #0b0b0b, #1a1a1a);
-  overflow: visible; /* fix: show elements like club hands */
+  overflow: hidden;
   padding-bottom: 100px;
 }
 
@@ -69,11 +69,11 @@ body {
   text-shadow: 0 0 6px rgba(179,107,0,0.8);
 }
 
-/* Club hands graphic */
+/* Club hands in header */
 .club-hands {
   position: absolute;
   right: 40px;
-  top: 10px;
+  top: 20px;
   height: 60px;
   width: auto;
   z-index: 3;
@@ -126,7 +126,7 @@ body {
 /* ================= PAGE CONTENT ================= */
 .page-container {
   display: flex;
-  justify-content: space-between; /* Push left/right outward */
+  justify-content: space-between;
   gap: 40px;
   max-width: 1400px;
   margin: 40px auto;
@@ -150,7 +150,7 @@ body {
 
 /* Flex ratios: center wider, sides smaller */
 .left, .right { flex: 1; min-width: 220px; }
-.center { flex: 3; min-width: 600px; }
+.center { flex: 2.5; min-width: 500px; }
 
 .column h2 {
   color: #b36b00;
@@ -173,7 +173,7 @@ h2.videos-title {
 /* VIDEOS */
 .videos {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 videos per row */
+  grid-template-columns: repeat(2, 1fr);
   gap: 30px;
   margin-bottom: 60px;
 }
@@ -224,25 +224,15 @@ footer a { color: #b36b00; text-decoration: underline; }
 @media (max-width: 1024px) {
   .page-container { flex-direction: column; }
   .left, .center, .right { flex: 1; }
-  .videos { grid-template-columns: 1fr; } /* stack 1 video per row on tablets */
+  .videos { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    gap: 15px;
-    padding: 20px;
-  }
+  .navbar { flex-direction: column; gap: 15px; padding: 20px; }
   .hero-content h1 { font-size: 2.4em; }
   iframe { height: 220px; }
-
-  .club-hands {
-    right: 20px;
-    top: 15px;
-    height: 50px;
-  }
-
-  .videos { grid-template-columns: 1fr; } /* 1 video per row on mobile */
+  .club-hands { right: 20px; top: 15px; height: 50px; }
+  .videos { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -262,7 +252,7 @@ footer a { color: #b36b00; text-decoration: underline; }
     </div>
   </nav>
 
-  <!-- Club hands inside header -->
+  <!-- Club hands in header -->
   <img src="club-hands.png" alt="Club Hands" class="club-hands">
 
   <div class="hero-content">
