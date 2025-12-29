@@ -9,14 +9,14 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { 
       font-family: 'Roboto', sans-serif; 
-      background-color: #0d0d0d; /* midnight black background */ 
+      background-color: #0d0d0d; /* midnight black */ 
       color: #FFA500; /* orange text */ 
       line-height: 1.7; 
     }
 
     header { 
       position: relative; 
-      background: linear-gradient(135deg, #FFA500, #ff8c00); /* orange gradient */ 
+      background: linear-gradient(135deg, #FFA500, #ff8c00); 
       height: 260px; 
       display: flex; flex-direction: column; 
       justify-content: center; 
@@ -42,11 +42,7 @@
       letter-spacing: 2px; 
     }
 
-    header p { 
-      font-size: 1.2em; 
-      z-index: 1; 
-      max-width: 700px; 
-    }
+    header p { font-size: 1.2em; z-index: 1; max-width: 700px; }
 
     nav { text-align: center; margin: 30px 0; }
     nav a { color: #FFA500; margin: 0 15px; text-decoration: none; font-weight: 700; }
@@ -65,7 +61,7 @@
     .content-section p { margin-bottom: 18px; color: #FFA500; }
 
     footer {
-      background-color: #0d0d0d; /* midnight black */ 
+      background-color: #0d0d0d; 
       color: #FFA500; 
       text-align: center; 
       padding: 20px 10px; 
@@ -73,20 +69,10 @@
       line-height: 1.5;
     }
 
-    .contact-bulletin {
-      margin-top: 8px;
-      font-weight: 600;
-      font-size: 0.95em;
-    }
-
     @media (min-width: 768px) { iframe { height: 260px; } }
     @media (min-width: 1024px) { iframe { height: 300px; } }
 
-    /* Mobile adjustments */
-    @media (max-width: 480px) {
-      footer { font-size: 0.85em; padding: 15px 5px; }
-      .contact-bulletin { font-size: 0.85em; }
-    }
+    @media (max-width: 480px) { footer { font-size: 0.85em; padding: 15px 5px; } }
   </style>
 </head>
 <body>
@@ -149,10 +135,8 @@
 </main>
 
 <footer>
-  &copy; 2025 Str8 Flight Entertainment • Belize
-  <div class="contact-bulletin">
-    Contact: str8flightentertainment@gmail.com | Telephone: +501 615-0094
-  </div>
+  &copy; 2025 Str8 Flight Entertainment • Belize<br>
+  Contact: str8flightentertainment@gmail.com | Telephone: +501 615-0094
 </footer>
 
 </body>
