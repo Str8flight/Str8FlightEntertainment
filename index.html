@@ -49,6 +49,9 @@ body {
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-family: 'Montserrat', sans-serif;
   font-size: 1.6rem;
   letter-spacing: 2px;
@@ -57,6 +60,15 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0 10px rgba(255,165,0,0.8);
+}
+
+.logo img {
+  height: 40px;
+}
+
+.belize-logo {
+  border-radius: 5px;
+  height: 32px;
 }
 
 .nav-links {
@@ -106,7 +118,7 @@ body {
 .page-container {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 50px; /* increased spacing between left and right columns */
   max-width: 1300px;
   margin: 40px auto;
   padding: 0 20px;
@@ -221,11 +233,14 @@ footer a { color: #FFA500; text-decoration: underline; }
 <header class="hero-header">
 
   <nav class="navbar">
-    <div class="logo">STR8 FLIGHT</div>
+    <div class="logo">
+      <span>STR8 FLIGHT</span>
+      <img src="str8flight-logo.png" alt="Str8 Flight Logo" class="site-logo">
+      <img src="belize-flag.png" alt="Belize Flag" class="belize-logo">
+    </div>
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="privacy.html">Privacy Policy</a>
-      <a href="#videos">Videos</a>
     </div>
   </nav>
 
@@ -240,11 +255,12 @@ footer a { color: #FFA500; text-decoration: underline; }
 
   <div class="column left">
     <h2>About</h2>
-    <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>.</p>
-    <p>The Barrow brothers are actively involved in music production, recording, and creative direction.</p>
+    <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>. The team is committed to promoting authentic music and Caribbean culture while giving a platform to emerging artists and creators.</p>
+    <p>The Barrow brothers are actively involved in music production, recording, creative direction, and artist development. They work tirelessly to maintain originality, quality, and cultural relevance in every project.</p>
+    <p>Str8 Flight Entertainment also engages with local communities through events, workshops, and collaborations, aiming to inspire and nurture Belizean talent while connecting it to a global audience.</p>
   </div>
 
-  <div class="column center" id="videos">
+  <div class="column center">
     <h2 class="videos-title">Featured Music Videos</h2>
     <div class="videos">
 
