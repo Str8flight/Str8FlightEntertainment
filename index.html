@@ -7,187 +7,124 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1435942574271393"
- crossorigin="anonymous"></script>
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1435942574271393" crossorigin="anonymous"></script>
 
 <style>
-/* ================= GLOBAL ================= */
 *{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:'Roboto',sans-serif;
-  background:#0b0b0b;
-  color:#fff;
-  overflow-x:hidden;
-}
-h1,h2{font-family:'Montserrat',sans-serif}
+body{font-family:Roboto,sans-serif;background:#0b0b0b;color:#fff;overflow-x:hidden}
+h1,h2{font-family:Montserrat,sans-serif}
 a{text-decoration:none}
 
-/* ================= NAVBAR ================= */
+/* ================= NAV ================= */
 .navbar{
-  position:fixed;
-  top:0;
-  width:100%;
-  z-index:1000;
-  background:rgba(0,0,0,0.75);
-  backdrop-filter:blur(6px);
-  display:flex;
-  justify-content:center;
-  gap:28px;
-  padding:15px;
+  position:fixed;top:0;width:100%;z-index:1000;
+  background:rgba(0,0,0,.8);backdrop-filter:blur(6px);
 }
-.navbar a{
-  color:#b36b00;
-  font-weight:700;
+.nav-inner{
+  max-width:1200px;margin:auto;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:15px 20px;
 }
-.navbar a:hover{color:#ff9c3b}
+.nav-links{display:flex;gap:25px}
+.nav-links a{color:#b36b00;font-weight:700}
+.nav-links a:hover{color:#ff9c3b}
+
+.menu-btn{display:none;font-size:26px;color:#b36b00;cursor:pointer}
+
+/* Mobile */
+@media(max-width:768px){
+  .nav-links{
+    position:absolute;top:65px;left:0;width:100%;
+    background:#0b0b0b;
+    flex-direction:column;
+    display:none;
+    padding:20px 0;
+  }
+  .nav-links.active{display:flex}
+  .menu-btn{display:block}
+}
 
 /* ================= HERO ================= */
 .hero{
-  position:relative;
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  overflow:hidden;
+  height:100vh;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  text-align:center;position:relative;overflow:hidden;
 }
 .hero h1{
-  font-size:3.2em;
+  font-size:3em;
   background:linear-gradient(90deg,#b36b00,#ff9c3b);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  text-shadow:0 0 15px rgba(179,107,0,.7);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
 }
-.hero p{
-  margin-top:15px;
-  font-size:1.2em;
-  max-width:700px;
-  color:#ddd;
-}
+.hero p{max-width:700px;margin-top:15px;color:#ddd}
 
-/* ================= MIC BACKGROUND ================= */
-.mic-layer{
-  position:absolute;
-  top:0;left:0;
-  width:100%;
-  height:100%;
-  z-index:0;
-  overflow:hidden;
-}
+/* ================= MIC ANIMATION ================= */
+.mic-layer{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
 .mic{
   position:absolute;
-  opacity:.7;
+  width:30px;
+  background:transparent;
   animation:flyMic linear infinite;
 }
-
-/* 🎤 MIC ANIMATION (TILT LEFT / RIGHT) */
 @keyframes flyMic{
-  0%{
-    transform:translateY(110vh) rotate(var(--tilt-start));
-    opacity:0;
-  }
-  20%{opacity:.75}
-  50%{
-    transform:translateY(0) rotate(var(--tilt-mid));
-  }
-  100%{
-    transform:translateY(-130vh) rotate(var(--tilt-end));
-    opacity:0;
-  }
+  0%{transform:translateY(120vh) rotate(-25deg);opacity:0}
+  20%{opacity:.7}
+  50%{transform:translateY(0) rotate(15deg)}
+  100%{transform:translateY(-140vh) rotate(-20deg);opacity:0}
 }
 
 /* ================= CONTENT ================= */
-.section{
-  max-width:1200px;
-  margin:80px auto;
-  padding:0 20px;
-}
+.section{max-width:1200px;margin:80px auto;padding:0 20px}
 .card{
-  background:#1a1a1a;
-  padding:30px;
-  border-radius:16px;
+  background:#1a1a1a;padding:30px;border-radius:16px;
   box-shadow:0 0 20px rgba(179,107,0,.4);
-  margin-bottom:40px;
 }
-.card h2{
-  color:#b36b00;
-  margin-bottom:15px;
-}
+.videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px}
+iframe{width:100%;height:250px;border-radius:14px;border:none}
 
-/* ================= VIDEOS ================= */
-.videos{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:30px;
-}
-iframe{
-  width:100%;
-  height:260px;
-  border:none;
-  border-radius:14px;
-}
-
-/* ================= FOOTER ================= */
-footer{
-  text-align:center;
-  padding:25px;
-  color:#b36b00;
-  font-size:.9em;
-}
-
-/* ================= MOBILE ================= */
-@media(max-width:768px){
-  .hero h1{font-size:2.4em}
-  iframe{height:220px}
-}
+footer{text-align:center;padding:25px;color:#b36b00}
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
 <nav class="navbar">
-  <a href="index.html">Home</a>
-  <a href="#about">About</a>
-  <a href="#videos">Videos</a>
-  <a href="services.html">Services</a>
-  <a href="contact.html">Contact</a>
-  <a href="privacy.html">Privacy</a>
+  <div class="nav-inner">
+    <strong style="color:#b36b00">STR8 FLIGHT</strong>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="#about">About</a>
+      <a href="#videos">Videos</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
 </nav>
 
-<!-- HERO -->
 <header class="hero">
   <div class="mic-layer" id="micLayer"></div>
-
-  <img src="str8flight-logo.png" alt="Str8 Flight Logo" style="width:120px;margin-bottom:20px;z-index:1">
+  <img src="str8flight-logo.png" style="width:120px;z-index:1">
   <h1>Str8 Flight Entertainment</h1>
-  <p>Belize-based platform promoting original music, independent artists, and Caribbean creativity.</p>
+  <p>Belize-based platform promoting original music and Caribbean creativity</p>
 </header>
 
-<!-- ABOUT -->
 <section class="section card" id="about">
   <h2>About</h2>
-  <p>
-    Str8 Flight Entertainment is a Belize-based music and media platform founded by Denton Barrow,
-    alongside Cleon and Fenton Barrow. The brand focuses on originality, culture, and artist development.
-  </p>
+  <p>Founded by Denton, Cleon & Fenton Barrow, Str8 Flight Entertainment supports artists through production, recording and development.</p>
 </section>
 
-<!-- VIDEOS -->
 <section class="section card" id="videos">
-  <h2>Featured Videos</h2>
+  <h2>Videos</h2>
   <div class="videos">
-    <iframe src="https://www.youtube.com/embed/0QwKo-mssxc" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/pInxfriRH_w" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/cXzqzTYxbsQ" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/8E9zA7Bq1js" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/0QwKo-mssxc"></iframe>
+    <iframe src="https://www.youtube.com/embed/pInxfriRH_w"></iframe>
+    <iframe src="https://www.youtube.com/embed/cXzqzTYxbsQ"></iframe>
+    <iframe src="https://www.youtube.com/embed/8E9zA7Bq1js"></iframe>
   </div>
 
-  <!-- AdSense -->
-  <ins class="adsbygoogle"
-    style="display:block;margin-top:40px"
+  <ins class="adsbygoogle" style="display:block;margin-top:40px"
     data-ad-client="ca-pub-1435942574271393"
     data-ad-slot="1902622418"
     data-ad-format="auto"
@@ -195,33 +132,23 @@ footer{
   <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
 </section>
 
-<footer>
-  © 2025 Str8 Flight Entertainment • Belize
-</footer>
+<footer>© 2025 Str8 Flight Entertainment • Belize</footer>
 
-<!-- 🎤 MIC SCRIPT -->
 <script>
-const micLayer = document.getElementById("micLayer");
-const isMobile = window.innerWidth < 768;
-const micCount = isMobile ? 10 : 18;
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("active");
+}
 
-for(let i=0;i<micCount;i++){
+/* MIC CREATION */
+const layer=document.getElementById("micLayer");
+for(let i=0;i<14;i++){
   const mic=document.createElement("img");
-  mic.src="https://cdn-icons-png.flaticon.com/512/727/727245.png"; // mic icon
+  mic.src="https://cdn-icons-png.flaticon.com/512/727/727245.png";
   mic.className="mic";
-
   mic.style.left=Math.random()*100+"%";
-  mic.style.width=isMobile?"22px":"30px";
-
-  const tiltRange=isMobile?20:45;
-  mic.style.setProperty("--tilt-start",(Math.random()*tiltRange-tiltRange/2)+"deg");
-  mic.style.setProperty("--tilt-mid",(Math.random()*tiltRange-tiltRange/2)+"deg");
-  mic.style.setProperty("--tilt-end",(Math.random()*tiltRange-tiltRange/2)+"deg");
-
-  mic.style.animationDuration=(isMobile?10:14)+Math.random()*8+"s";
+  mic.style.animationDuration=12+Math.random()*10+"s";
   mic.style.animationDelay=Math.random()*10+"s";
-
-  micLayer.appendChild(mic);
+  layer.appendChild(mic);
 }
 </script>
 
