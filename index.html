@@ -5,244 +5,63 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Str8 Flight Entertainment | Belize Music & Culture</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=pub-1435942574271393"
-     crossorigin="anonymous"></script>
-
 <style>
 /* ================= GLOBAL ================= */
 * { margin:0; padding:0; box-sizing:border-box; }
-body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #0b0b0b;
-  color:#fff;
-  line-height:1.7;
-  overflow-x:hidden;
-}
+body { font-family:'Roboto',sans-serif; background:#0b0b0b; color:#fff; line-height:1.7; overflow-x:hidden; }
 a { text-decoration:none; }
-h2 { font-family:'Montserrat', sans-serif; }
 
 /* ================= NAVBAR ================= */
 .navbar {
-  position: fixed;
-  top:0;
-  width:100%;
-  z-index:100;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px 40px;
-  background:rgba(0,0,0,0.7);
-  backdrop-filter:blur(5px);
+  position: fixed; top:0; width:100%; z-index:100;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:20px 40px; background:rgba(0,0,0,0.7); backdrop-filter:blur(5px);
 }
-.navbar-left {
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-.logo-img, .flag-img {
-  height:40px;
-  width:auto;
-}
-.logo-text {
-  font-family:'Montserrat',sans-serif;
-  font-size:1.6rem;
-  font-weight:700;
-  background:linear-gradient(90deg,#b36b00,#8a4c00);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  text-shadow:0 0 6px rgba(179,107,0,0.8);
-}
-.nav-links {
-  display:flex;
-  gap:25px;
-}
-.nav-links a {
-  color:#b36b00;
-  font-weight:700;
-  transition:0.3s;
-}
-.nav-links a:hover { color:#ff9c3b; }
+.navbar-left { display:flex; align-items:center; gap:10px; }
+.logo-img,.flag-img { height:40px; width:auto; }
+.logo-text { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.6rem; background:linear-gradient(90deg,#b36b00,#8a4c00); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:0 0 6px rgba(179,107,0,0.8);}
+.nav-links a { color:#b36b00; font-weight:700; text-shadow:0 0 4px #b36b00; transition:0.3s; margin-left:15px; }
+.nav-links a:hover { color:#ff9c3b; text-shadow:0 0 10px #ff9c3b,0 0 20px #b36b00; }
 
 /* ================= HERO ================= */
 .hero-header {
-  position:relative;
-  height:100vh;
-  text-align:center;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
+  position:relative; height:100vh; text-align:center;
+  display:flex; flex-direction:column; justify-content:center; align-items:center; overflow:hidden;
 }
-.hero-header h1 {
-  font-family:'Montserrat',sans-serif;
-  font-size:3em;
-  background:linear-gradient(90deg,#b36b00,#8a4c00);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  text-shadow:0 0 10px #b36b00;
-  animation:fadeInDown 1.2s ease forwards;
-}
-.hero-header p {
-  margin-top:15px;
-  font-size:1.2em;
-  opacity:0;
-  animation:fadeInUp 1.5s ease forwards;
-  animation-delay:0.3s;
-}
-@keyframes fadeInDown { 0% { opacity:0; transform:translateY(-30px);} 100% { opacity:1; transform:translateY(0);} }
-@keyframes fadeInUp { 0% { opacity:0; transform:translateY(30px);} 100% { opacity:1; transform:translateY(0);} }
+.hero-header h1 { font-family:'Montserrat',sans-serif; font-size:3em; background:linear-gradient(90deg,#b36b00,#8a4c00); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:0 0 10px #b36b00; animation:fadeInDown 1.2s ease forwards;}
+.hero-header p { margin-top:15px; font-size:1.2em; opacity:0; animation:fadeInUp 1.5s ease forwards; animation-delay:0.3s; }
+
+@keyframes fadeInDown { 0%{opacity:0; transform:translateY(-30px);} 100%{opacity:1; transform:translateY(0);} }
+@keyframes fadeInUp { 0%{opacity:0; transform:translateY(30px);} 100%{opacity:1; transform:translateY(0);} }
 
 /* ================= PARTICLES ================= */
-.particles {
-  position:absolute;
-  top:0; left:0;
-  width:100%; height:100%;
-  z-index:0;
-  overflow:hidden;
-}
-.particles div {
-  position:absolute;
-  width:6px; height:6px;
-  background:#b36b00;
-  border-radius:50%;
-  opacity:0.6;
-  animation:moveParticles 10s linear infinite;
-}
-@keyframes moveParticles {
-  0% { transform:translateY(0) translateX(0); opacity:0.6; }
-  50% { opacity:1; }
-  100% { transform:translateY(-1200px) translateX(400px); opacity:0.2; }
-}
+.particles { position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; overflow:hidden; }
+.particles div { position:absolute; width:6px; height:6px; background:#b36b00; border-radius:50%; opacity:0.6; animation:moveParticles 10s linear infinite; }
+@keyframes moveParticles { 0%{transform:translateY(0) translateX(0); opacity:0.6;} 50%{opacity:1;} 100%{transform:translateY(-1200px) translateX(400px); opacity:0.2;} }
 
 /* ================= PAGE CONTENT ================= */
-.page-container {
-  display:flex;
-  justify-content:space-between;
-  gap:40px;
-  max-width:1400px;
-  margin:50px auto 100px;
-  padding:0 20px;
-  flex-wrap:wrap;
-}
-.column {
-  background:#1a1a1a;
-  padding:30px;
-  border-radius:16px;
-  color:#e0e0e0;
-  line-height:1.7;
-  box-shadow:0 0 15px rgba(179,107,0,0.5),0 0 30px rgba(138,76,0,0.3);
-  transition:transform 0.3s ease, box-shadow 0.3s ease;
-  opacity:0;
-  transform:translateY(30px);
-}
+.page-container { display:flex; justify-content:space-between; gap:40px; max-width:1400px; margin:50px auto 100px; padding:0 20px; flex-wrap:wrap; }
+.column { background:#1a1a1a; padding:30px; border-radius:16px; color:#e0e0e0; line-height:1.7; box-shadow:0 0 15px rgba(179,107,0,0.5),0 0 30px rgba(138,76,0,0.3); transition:transform 0.3s ease, box-shadow 0.3s ease; opacity:0; transform:translateY(30px; }
 .column.visible { opacity:1; transform:translateY(0); transition:1s ease; }
 .column:hover { transform:translateY(-5px); box-shadow:0 0 25px #b36b00,0 0 40px #8a4c00; }
-
-.left, .right { flex:1; min-width:250px; }
-.center { flex:2.5; min-width:550px; }
-
-.column h2 { color:#b36b00; margin-bottom:15px; text-shadow:0 0 8px #b36b00; }
-h2.videos-title { text-align:center; margin-bottom:25px; font-size:2em; text-shadow:0 0 10px #b36b00; }
-.column p { margin-bottom:22px; }
+.left,.right{flex:1;min-width:250px;} .center{flex:2.5;min-width:550px;}
+.column h2{color:#b36b00; margin-bottom:15px; text-shadow:0 0 8px #b36b00;} 
+h2.videos-title{text-align:center;margin-bottom:25px;font-size:2em;text-shadow:0 0 10px #b36b00;} 
+.column p{margin-bottom:22px;}
 
 /* ================= VIDEOS ================= */
-.videos {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:30px;
-  margin-bottom:60px;
-}
-.video-card {
-  background:#1a1a1a;
-  padding:20px;
-  border-radius:16px;
-  box-shadow:0 0 15px #b36b00;
-  transition:transform 0.3s ease, box-shadow 0.3s ease;
-}
-.video-card:hover { transform:translateY(-5px); box-shadow:0 0 25px #b36b00,0 0 40px #8a4c00; }
-iframe { width:100%; height:270px; border-radius:14px; border:none; }
-.video-title { margin-top:12px; font-weight:700; font-size:1.05em; text-align:center; text-shadow:0 0 4px #b36b00; }
-
-/* ================= CONTACT SECTION ================= */
-.contact-info {
-  max-width:700px;
-  margin:40px auto;
-  background:#1a1a1a;
-  padding:30px;
-  border-radius:16px;
-  box-shadow:0 0 25px #b36b00;
-  opacity:0;
-  transform:translateY(30px);
-  transition:1s ease;
-}
-.contact-info.visible { opacity:1; transform:translateY(0); }
-.contact-info h2 {
-  text-align:center;
-  margin-bottom:25px;
-  color:#b36b00;
-  text-shadow:0 0 8px #b36b00;
-}
-.contact-info form {
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-}
-.contact-info input,
-.contact-info textarea {
-  padding:12px;
-  border-radius:10px;
-  border:none;
-  font-size:1em;
-  width:100%;
-}
-.contact-info button {
-  padding:12px;
-  border-radius:10px;
-  border:none;
-  background:#b36b00;
-  color:#fff;
-  font-weight:700;
-  cursor:pointer;
-  transition:0.3s;
-}
-.contact-info button:hover { background:#ff9c3b; }
-.contact-info .social-links {
-  text-align:center;
-  margin-top:40px;
-}
-.contact-info .social-links h3 { margin-bottom:15px; color:#b36b00; }
-.contact-info .social-links a {
-  margin:0 15px;
-  color:#b36b00;
-  font-weight:700;
-  transition:0.3s;
-}
-.contact-info .social-links a:hover { color:#ff9c3b; }
+.videos{display:grid; grid-template-columns:repeat(2,1fr); gap:30px; margin-bottom:60px;}
+.video-card{background:#1a1a1a;padding:20px;border-radius:16px;box-shadow:0 0 15px #b36b00; transition:transform 0.3s ease,box-shadow 0.3s ease;}
+.video-card:hover{transform:translateY(-5px); box-shadow:0 0 25px #b36b00,0 0 40px #8a4c00;}
+iframe{width:100%; height:270px; border-radius:14px; border:none;}
+.video-title{margin-top:12px;font-weight:700;font-size:1.05em;text-align:center;text-shadow:0 0 4px #b36b00;}
 
 /* ================= FOOTER ================= */
-footer {
-  background:#0b0b0b;
-  color:#b36b00;
-  text-align:center;
-  padding:25px 10px;
-  font-size:0.9em;
-  box-shadow:0 -3px 8px rgba(179,107,0,0.3);
-  text-shadow:0 0 4px #b36b00;
-}
+footer{background:#0b0b0b;color:#b36b00;text-align:center;padding:25px 10px;font-size:0.9em;box-shadow:0 -3px 8px rgba(179,107,0,0.3); text-shadow:0 0 4px #b36b00;}
 
 /* ================= RESPONSIVE ================= */
-@media(max-width:1024px) {
-  .page-container { flex-direction:column; }
-  .left,.center,.right { flex:1; min-width:auto; }
-  .videos { grid-template-columns:1fr; }
-}
-@media(max-width:768px) {
-  .hero-header h1 { font-size:2.4em; }
-  iframe { height:220px; }
-}
+@media(max-width:1024px){.page-container{flex-direction:column;}.left,.center,.right{flex:1;min-width:auto;}.videos{grid-template-columns:1fr;}}
+@media(max-width:768px){.hero-header h1{font-size:2.4em;} iframe{height:220px;}}
 </style>
 </head>
 <body>
@@ -257,7 +76,7 @@ footer {
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="#videos">Videos</a>
-    <a href="#contact">Contact</a>
+    <a href="contacts.html">Contact</a>
   </div>
 </nav>
 
@@ -312,47 +131,29 @@ footer {
     </div>
   </div>
 
-</div>
-
-<!-- CONTACT SECTION -->
-<div class="contact-info" id="contact">
-  <h2>Get in Touch</h2>
-  <form action="https://formspree.io/f/b0dd08cede75446a922d2a3c42bf75dd" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="_replyto" placeholder="Your Email" required>
-    <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-  <div class="social-links">
-    <h3>Follow Us</h3>
-    <a href="https://www.instagram.com/str8flightentertainment/?hl=en" target="_blank">Instagram</a>
-    <a href="https://www.facebook.com/Str8flightentertainment/" target="_blank">Facebook</a>
-    <a href="https://www.youtube.com/@str8flightentertainment" target="_blank">YouTube</a>
-    <a href="https://music.apple.com/us/album/party-riddim-2020/1527887305" target="_blank">Apple Music</a>
+  <div class="column right" id="contact">
+    <h2>Contact</h2>
+    <ul>
+      <li>Email: <a href="mailto:str8flightentertainment@gmail.com">str8flightentertainment@gmail.com</a></li>
+      <li>Phone: +501 615-0094</li>
+      <li>
+        Follow us:
+        <a href="https://www.instagram.com/str8flightentertainment/?hl=en" target="_blank">Instagram</a>,
+        <a href="https://www.facebook.com/Str8flightentertainment/" target="_blank">Facebook</a>,
+        <a href="https://www.youtube.com/@str8flightentertainment" target="_blank">YouTube</a>,
+        <a href="https://music.apple.com/us/album/party-riddim-2020/1527887305" target="_blank">Apple Music</a>
+      </li>
+    </ul>
   </div>
+
 </div>
 
-<!-- GOOGLE ADS SECTION (EXAMPLE) -->
-<div style="text-align:center; margin:40px 0;">
-  <!-- Example banner ad -->
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="pub-1435942574271393"
-       data-ad-slot="1234567890"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-       (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-</div>
-
-<!-- FOOTER -->
 <footer>
   &copy; 2025 Str8 Flight Entertainment • Belize
 </footer>
 
 <script>
-// Particle animation
+// Particle creation
 const particleContainer = document.getElementById('particles');
 for(let i=0;i<60;i++){
   const div=document.createElement('div');
@@ -364,13 +165,13 @@ for(let i=0;i<60;i++){
   particleContainer.appendChild(div);
 }
 
-// Scroll reveal for columns
-const columns = document.querySelectorAll('.column, .contact-info');
+// Scroll reveal
+const columns = document.querySelectorAll('.column');
 const revealOnScroll = () => {
   const triggerBottom = window.innerHeight * 0.85;
-  columns.forEach(col => {
-    const boxTop = col.getBoundingClientRect().top;
-    if(boxTop < triggerBottom) col.classList.add('visible');
+  columns.forEach(column => {
+    const boxTop = column.getBoundingClientRect().top;
+    if(boxTop < triggerBottom) column.classList.add('visible');
   });
 }
 window.addEventListener('scroll', revealOnScroll);
