@@ -71,13 +71,15 @@ h2 { font-family:'Montserrat', sans-serif; }
 }
 .column.visible { opacity:1; transform:translateY(0); transition:1s ease; }
 .column:hover { transform:translateY(-5px); box-shadow:0 0 25px #b36b00,0 0 40px #8a4c00; }
-.left, .right { flex:1; min-width:250px; } .center { flex:2.5; min-width:550px; }
+.left { flex:1; min-width:250px; }
+.center { flex:2.5; min-width:550px; }
+.right { flex:1; min-width:250px; }
 .column h2 { color:#b36b00; margin-bottom:15px; text-shadow:0 0 8px #b36b00; }
 h2.videos-title { text-align:center; margin-bottom:25px; font-size:2em; text-shadow:0 0 10px #b36b00; }
 .column p { margin-bottom:22px; }
 
 /* ================= VIDEOS ================= */
-.videos { display:grid; grid-template-columns:repeat(2,1fr); gap:30px; margin-bottom:60px; }
+.videos { display:grid; grid-template-columns:repeat(2,1fr); gap:30px; margin-bottom:30px; }
 .video-card {
   background:#1a1a1a; padding:20px; border-radius:16px; box-shadow:0 0 15px #b36b00;
   transition:transform 0.3s ease, box-shadow 0.3s ease;
@@ -86,12 +88,12 @@ h2.videos-title { text-align:center; margin-bottom:25px; font-size:2em; text-sha
 iframe { width:100%; height:270px; border-radius:14px; border:none; }
 .video-title { margin-top:12px; font-weight:700; font-size:1.05em; text-align:center; text-shadow:0 0 4px #b36b00; }
 
+/* ================= FOOTER ================= */
+footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px; font-size:0.9em; box-shadow:0 -3px 8px rgba(179,107,0,0.3); text-shadow:0 0 4px #b36b00; }
+
 /* ================= RESPONSIVE ================= */
 @media(max-width:1024px){ .page-container{flex-direction:column;} .left,.center,.right{flex:1;min-width:auto;} .videos{grid-template-columns:1fr;} }
 @media(max-width:768px){ .hero-header h1{font-size:2.4em;} iframe{height:220px;} }
-
-/* ================= FOOTER ================= */
-footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px; font-size:0.9em; box-shadow:0 -3px 8px rgba(179,107,0,0.3); text-shadow:0 0 4px #b36b00; }
 
 </style>
 </head>
@@ -114,7 +116,7 @@ footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px
 <!-- PAGE CONTENT -->
 <div class="page-container">
 
-  <!-- ABOUT -->
+  <!-- LEFT COLUMN: ABOUT -->
   <div class="column left" id="about">
     <h2>About</h2>
     <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>. The team is committed to promoting authentic music and Caribbean culture while giving a platform to emerging artists and creators.</p>
@@ -122,7 +124,7 @@ footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px
     <p>Str8 Flight Entertainment also engages with local communities through events, workshops, and collaborations, aiming to inspire and nurture Belizean talent while connecting it to a global audience.</p>
   </div>
 
-  <!-- VIDEOS -->
+  <!-- CENTER COLUMN: VIDEOS -->
   <div class="column center" id="videos">
     <h2 class="videos-title">Featured Music Videos</h2>
     <div class="videos">
@@ -146,6 +148,22 @@ footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px
          (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
 
+  </div>
+
+  <!-- RIGHT COLUMN: CONTACT / SOCIAL -->
+  <div class="column right" id="contact">
+    <h2>Contact</h2>
+    <ul>
+      <li>Email: <a href="mailto:str8flightentertainment@gmail.com">str8flightentertainment@gmail.com</a></li>
+      <li>Phone: +501 615-0094</li>
+      <li>
+        Follow us:
+        <a href="https://www.instagram.com/str8flightentertainment/?hl=en" target="_blank">Instagram</a>,
+        <a href="https://www.facebook.com/Str8flightentertainment/" target="_blank">Facebook</a>,
+        <a href="https://www.youtube.com/@str8flightentertainment" target="_blank">YouTube</a>,
+        <a href="https://music.apple.com/us/album/party-riddim-2020/1527887305" target="_blank">Apple Music</a>
+      </li>
+    </ul>
   </div>
 
 </div>
