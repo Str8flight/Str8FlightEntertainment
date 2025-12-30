@@ -1,111 +1,203 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | Str8 Flight Entertainment</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<style>
+/* ================= GLOBAL ================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #0b0b0b;
+  color: #fff;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
 
-  <meta charset="UTF-8">
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+.logo-img {
+  height: 40px;
+}
 
-  <title>Contact | Str8 Flight Entertainment</title>
+.logo-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #b36b00, #8a4c00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 6px rgba(179,107,0,0.8);
+}
 
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+.nav-links {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
-  <style>
+.nav-links a {
+  color: #b36b00;
+  font-weight: 700;
+  text-decoration: none;
+  text-shadow: 0 0 4px #b36b00;
+  transition: 0.3s;
+}
 
-    body { 
+.nav-links a:hover {
+  color: #ff9c3b;
+  text-shadow: 0 0 10px #ff9c3b, 0 0 20px #b36b00;
+}
 
-      font-family: 'Roboto', sans-serif; 
+/* HEADER */
+.hero-header {
+  text-align: center;
+  padding: 100px 20px 60px;
+  background: linear-gradient(135deg, #0b0b0b, #1a1a1a);
+}
 
-      background-color: #0d0d0d; 
+.hero-header h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3em;
+  color: #b36b00;
+  text-shadow: 0 0 8px #b36b00, 0 0 15px #8a4c00;
+  margin-bottom: 15px;
+}
 
-      color: #fff; 
+.hero-header p {
+  font-size: 1.2em;
+  text-shadow: 0 0 4px #fff;
+}
 
-      line-height: 1.7; 
+/* FORM CONTAINER */
+.contact-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #1a1a1a;
+  border-radius: 16px;
+  box-shadow: 0 0 20px #b36b00, 0 0 35px #8a4c00;
+}
 
-      padding: 20px; 
+.contact-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #b36b00;
+  text-shadow: 0 0 10px #b36b00;
+}
 
-    }
+/* FORM STYLING */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
-    h2 { 
+.contact-form label {
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #ff9c3b;
+}
 
-      color: #1DB954; 
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #0b0b0b;
+  color: #fff;
+  font-size: 1em;
+  box-shadow: inset 0 0 8px rgba(179,107,0,0.3);
+  resize: none;
+}
 
-      text-align: center; 
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  box-shadow: 0 0 15px #b36b00, 0 0 30px #8a4c00;
+}
 
-      margin-bottom: 30px; 
+.contact-form button {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(90deg, #b36b00, #8a4c00);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-    }
+.contact-form button:hover {
+  background: linear-gradient(90deg, #ff9c3b, #b36b00);
+  box-shadow: 0 0 15px #ff9c3b, 0 0 30px #b36b00;
+}
 
-    p { 
+/* FOOTER */
+footer {
+  background: #0b0b0b;
+  color: #b36b00;
+  text-align: center;
+  padding: 25px 10px;
+  font-size: 0.9em;
+  box-shadow: 0 -3px 8px rgba(179,107,0,0.3);
+  text-shadow: 0 0 4px #b36b00;
+}
 
-      margin-bottom: 20px; 
-
-    }
-
-    a { 
-
-      color: #1DB954; 
-
-      text-decoration: none; 
-
-    }
-
-    ul { 
-
-      list-style: none; 
-
-      padding-left: 0; 
-
-    }
-
-    li { 
-
-      margin-bottom: 10px; 
-
-    }
-
-  </style>
-
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero-header h1 { font-size: 2.4em; }
+}
+</style>
 </head>
-
 <body>
 
+<header class="hero-header">
+  <nav class="navbar">
+    <div class="logo-text">STR8 FLIGHT</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#videos">Videos</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
 
+  <h1>Contact Us</h1>
+  <p>Send us a message and we’ll get back to you as soon as possible.</p>
+</header>
 
-  <h2>Contact Str8 Flight Entertainment</h2>
+<div class="contact-container">
+  <h2>Get in Touch</h2>
+  <form class="contact-form" action="mailto:str8flightentertainment@gmail.com" method="post" enctype="text/plain">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" placeholder="Your Name" required>
 
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Your Email" required>
 
+    <label for="message">Message</label>
+    <textarea id="message" name="message" placeholder="Your Message" rows="6" required></textarea>
 
-  <p>If you have questions, suggestions, or business inquiries, please reach out to us using the information below:</p>
+    <button type="submit">Send Message</button>
+  </form>
+</div>
 
-
-
-  <ul>
-
-    <li>Email: <a href="mailto:str8flightentertainment@gmail.com">str8flightentertainment@gmail.com</a></li>
-
-    <li>Phone: +501 615-0094</li>
-
-    <li>Follow us on social media: 
-
-      <a href="https://www.instagram.com/str8flightentertainment/?hl=en">Instagram</a>, 
-
-      <a href="https://www.facebook.com/Str8flightentertainment/">Facebook</a>, 
-
-      <a href="https://www.youtube.com/@str8flightentertainment">YouTube</a>
-
-    </li>
-
-  </ul>
-
-
-
-  <p>We look forward to hearing from you!</p>
-
-
+<footer>
+  &copy; 2025 Str8 Flight Entertainment • Belize
+</footer>
 
 </body>
-
 </html>
