@@ -21,8 +21,6 @@ body {
   overflow-x:hidden;
 }
 
-a { text-decoration:none; color:#b36b00; }
-
 /* ================= NAVBAR ================= */
 .navbar {
   position:fixed;
@@ -77,6 +75,7 @@ a { text-decoration:none; color:#b36b00; }
 }
 
 .nav-list a {
+  color:#b36b00;
   font-weight:700;
   text-shadow:0 0 4px #b36b00;
   transition:.3s;
@@ -134,24 +133,41 @@ a { text-decoration:none; color:#b36b00; }
   z-index:0;
 }
 
+/* HERO ANIMATION FIX */
+.hero-header h1,
+.hero-header p {
+  position:relative;
+  z-index:2;
+  opacity:0;
+}
+
 .hero-header h1 {
   font-family:'Montserrat',sans-serif;
   font-size:3em;
   margin-bottom:12px;
   text-shadow:0 0 12px #b36b00;
-  position:relative;
-  z-index:2;
+  animation:fadeDown 1.2s forwards;
 }
 
 .hero-header p {
   font-size:1.2em;
   max-width:750px;
   margin:auto;
-  position:relative;
-  z-index:2;
+  animation:fadeUp 1.4s forwards;
+  animation-delay:.3s;
 }
 
-/* PARTICLES */
+@keyframes fadeDown {
+  from { opacity:0; transform:translateY(-30px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(30px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+/* ================= PARTICLES ================= */
 .particles {
   position:absolute;
   inset:0;
@@ -170,11 +186,11 @@ a { text-decoration:none; color:#b36b00; }
 }
 
 @keyframes floatUp {
-  from { transform:translateY(0); opacity:.6; }
-  to { transform:translateY(-1200px); opacity:0; }
+  from { transform:translateY(0) translateX(0); opacity:.6; }
+  to { transform:translateY(-1200px) translateX(80px); opacity:0; }
 }
 
-/* ================= PAGE LAYOUT ================= */
+/* ================= PAGE CONTENT ================= */
 .page-container {
   max-width:1400px;
   margin:60px auto;
@@ -265,7 +281,6 @@ footer {
 
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar">
   <div class="logo">
     <img src="str8flight-logo.png">
@@ -287,43 +302,30 @@ footer {
   </ul>
 </nav>
 
-<!-- HERO -->
 <header class="hero-header">
   <div class="particles" id="particles"></div>
-
   <h1>Str8 Flight Entertainment</h1>
   <p>Belize-based platform promoting original music, independent artists, and Caribbean creativity.</p>
 </header>
 
-<!-- CONTENT -->
 <div class="page-container">
 
-  <!-- ABOUT -->
   <div class="column left" id="about">
     <h2>About</h2>
 
-    <p>
-      Str8 Flight Entertainment is a Belize-based music and media platform founded by
+    <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by
       <strong>Denton Barrow</strong> along with his brothers
       <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>.
       The team is committed to promoting authentic music and Caribbean culture while
-      giving a platform to emerging artists and creators.
-    </p>
+      giving a platform to emerging artists and creators.</p>
 
-    <p>
-      The Barrow brothers are actively involved in music production, recording,
-      creative direction, and artist development. They work tirelessly to maintain
-      originality, quality, and cultural relevance in every project.
-    </p>
+    <p>The Barrow brothers are actively involved in music production, recording,
+      creative direction, and artist development.</p>
 
-    <p>
-      Str8 Flight Entertainment also engages with local communities through events,
-      workshops, and collaborations, aiming to inspire and nurture Belizean talent
-      while connecting it to a global audience.
-    </p>
+    <p>Str8 Flight Entertainment also engages with local communities through events,
+      workshops, and collaborations.</p>
   </div>
 
-  <!-- VIDEOS -->
   <div class="column center" id="videos">
     <h2>Featured Music Videos</h2>
 
@@ -345,17 +347,15 @@ footer {
 </footer>
 
 <script>
-/* mobile menu */
 document.getElementById('menu').onclick=()=>{
   document.querySelector('.nav-list').classList.toggle('active');
 };
 
-/* particles */
 const particles=document.getElementById('particles');
 for(let i=0;i<70;i++){
   const p=document.createElement('span');
   p.style.left=Math.random()*100+'%';
-  p.style.animationDuration=(6+Math.random()*8)+'s';
+  p.style.animationDuration=(6+Math.random()*10)+'s';
   p.style.animationDelay=Math.random()*5+'s';
   particles.appendChild(p);
 }
