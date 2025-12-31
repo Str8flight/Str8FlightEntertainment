@@ -72,11 +72,6 @@ body.light .column{background:#fff;}
 .column p{margin-bottom:15px;line-height:1.7;}
 .section-title{text-align:center;font-size:2.2em;margin-bottom:30px;color:#b36b00;text-shadow:0 0 10px #b36b00;}
 
-/* ===== LIVE SECTION ===== */
-#live-section{display:none;margin-bottom:30px;}
-#live-section .video-card{background:#141414;padding:18px;border-radius:16px;box-shadow:0 0 25px #b36b00;}
-#live-section .video-title{text-align:center;margin-top:10px;font-weight:700;color:#ff3b3b;}
-
 /* VIDEOS */
 .videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;}
 .video-card{background:#0f0f0f;padding:18px;border-radius:16px;box-shadow:0 0 18px #b36b00;transition:.3s;}
@@ -107,7 +102,6 @@ body.light footer{background:#f4f4f4;color:#111;}
   <ul class="nav-list">
     <li><a href="index.html">Home</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#live-section">LIVE</a></li>
     <li><a href="#videos">Videos</a></li>
     <li><a href="services.html">Services</a></li>
     <li><a href="contact.html">Contact</a></li>
@@ -126,18 +120,18 @@ body.light footer{background:#f4f4f4;color:#111;}
 <!-- PAGE CONTENT -->
 <div class="page-container">
 
+  <!-- LIVE SECTION -->
+  <div class="column center" id="live-section" style="display:none;">
+    <h2 class="section-title">LIVE NOW 🔴</h2>
+    <div id="live-container"></div>
+  </div>
+
   <!-- ABOUT -->
   <div class="column left" id="about">
     <h2>About</h2>
     <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>.</p>
     <p>The Barrow brothers are actively involved in music production, recording, creative direction, and artist development.</p>
     <p>Str8 Flight Entertainment also engages with local communities through events, workshops, and collaborations.</p>
-  </div>
-
-  <!-- LIVE SECTION -->
-  <div class="column center" id="live-section">
-    <h2 class="section-title">LIVE NOW 🔴</h2>
-    <div class="videos" id="live-container"></div>
   </div>
 
   <!-- VIDEOS -->
@@ -177,7 +171,7 @@ for(let i=0;i<70;i++){
   particlesContainer.appendChild(dot);
 }
 
-// Featured Videos
+// Videos
 const videosContainer = document.getElementById('videos-container');
 const videosList = [
   ["0QwKo-mssxc","Perry da Artist - Bad Freak"],
@@ -198,32 +192,28 @@ videosList.forEach(v=>{
 
 // Live detection (polls every 10s)
 const CHANNEL_ID = "UCp2UwspaBTvuEDMe9kx3aoA";
+const liveSection = document.getElementById('live-section');
+const liveContainer = document.getElementById('live-container');
+
 function checkLive() {
-  fetch(`https://str8flight-live-api.vercel.app/api/live?channelId=${CHANNEL_ID}`)
+  fetch(`https://str8flight-live-api.vercel.app/api/checkLive?channelId=${CHANNEL_ID}`)
     .then(r => r.json())
     .then(d => {
-      console.log("LIVE API RESPONSE:", d); // <-- debug log
-      const liveSection = document.getElementById('live-section');
-      const liveContainer = document.getElementById('live-container');
-      liveContainer.innerHTML = ''; // clear previous
-
+      liveContainer.innerHTML = '';
       if(d.live && d.videoId){
         liveSection.style.display = 'block';
         const liveDiv = document.createElement('div');
         liveDiv.className='video-card';
-        liveDiv.innerHTML = `<iframe src="https://www.youtube.com/embed/${d.videoId}?autoplay=1" allowfullscreen></iframe>
-                             <div class="video-title">LIVE NOW 🔴</div>`;
+        liveDiv.innerHTML = `<iframe src="https://www.youtube.com/embed/${d.videoId}?autoplay=1" allowfullscreen></iframe>`;
         liveContainer.appendChild(liveDiv);
       } else {
         liveSection.style.display = 'none';
       }
-    }).catch(e=>{
-      console.error("Live check error:", e);
-      document.getElementById('live-section').style.display = 'none';
-    });
+    })
+    .catch(e=>console.error(e));
 }
 checkLive();
-setInterval(checkLive,10000); // poll every 10 seconds
+setInterval(checkLive,10000); // Poll every 10s
 </script>
 
 </body>
