@@ -58,46 +58,16 @@ body.light .nav-list{background:#fff}
 
 /* HERO */
 .hero{
-position:relative;
 padding:110px 20px 40px;text-align:center;
-background:linear-gradient(135deg,#0b0b0b,#161616);
-overflow:hidden;
+background:linear-gradient(135deg,#0b0b0b,#161616)
 }
 body.light .hero{background:linear-gradient(135deg,#fff,#ddd)}
 .hero h1{
 font-family:'Montserrat',sans-serif;
 font-size:3em;color:#b36b00;
-text-shadow:0 0 14px #b36b00;
-position:relative;z-index:2;
+text-shadow:0 0 14px #b36b00
 }
-.hero p{
-font-size:1.2em;
-max-width:900px;
-margin:15px auto;
-position:relative;z-index:2;
-}
-
-/* PARTICLES */
-.particles{
-position:absolute;
-inset:0;
-z-index:1;
-pointer-events:none;
-}
-.particles span{
-position:absolute;
-width:6px;
-height:6px;
-background:#b36b00;
-border-radius:50%;
-opacity:.7;
-filter:drop-shadow(0 0 6px #b36b00);
-animation:floatUp linear infinite;
-}
-@keyframes floatUp{
-from{transform:translateY(100vh);opacity:.8}
-to{transform:translateY(-120vh);opacity:0}
-}
+.hero p{font-size:1.2em;max-width:900px;margin:15px auto}
 
 /* CONTENT */
 .page-container{
@@ -136,6 +106,20 @@ body.light .video-card{background:#fff}
 iframe{width:100%;height:260px;border:none;border-radius:12px}
 .video-title{text-align:center;margin-top:10px;font-weight:700}
 
+/* LIVE BADGE */
+.live-badge{
+color:#ff3b3b;
+font-weight:800;
+text-align:center;
+margin-top:8px;
+animation:pulse 1.2s infinite
+}
+@keyframes pulse{
+0%{opacity:1}
+50%{opacity:.4}
+100%{opacity:1}
+}
+
 /* FOOTER */
 footer{
 text-align:center;padding:30px;
@@ -171,7 +155,6 @@ body.light footer{background:#f4f4f4;color:#111}
 
 <!-- HERO -->
 <section class="hero">
-  <div class="particles" id="particles"></div>
   <h1>Str8 Flight Entertainment</h1>
   <p>Belize-based platform promoting original music, independent artists, and Caribbean creativity.</p>
 </section>
@@ -179,6 +162,7 @@ body.light footer{background:#f4f4f4;color:#111}
 <!-- CONTENT -->
 <div class="page-container">
 
+  <!-- ABOUT -->
   <div class="column left" id="about">
     <h2>About</h2>
     <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>.</p>
@@ -186,6 +170,7 @@ body.light footer{background:#f4f4f4;color:#111}
     <p>Str8 Flight Entertainment also engages with local communities through events, workshops, and collaborations.</p>
   </div>
 
+  <!-- VIDEOS -->
   <div class="column center">
     <h2 class="section-title" id="videos">Featured Music Videos</h2>
     <div class="videos" id="videos-container"></div>
@@ -213,7 +198,31 @@ toggle.onclick=()=>setTheme(document.body.classList.contains('light')?'dark':'li
 setTheme(localStorage.getItem('theme')||'dark');
 
 /* VIDEOS */
-const videos=[
+const videosContainer=document.getElementById('videos-container');
+
+/* LIVE DETECT */
+const CHANNEL_ID="UCp2UwspaBTvuEDMe9kx3aoA";
+
+function checkLive(){
+fetch(`https://str8flight-live-api.vercel.app/api/live?channelId=${CHANNEL_ID}`)
+.then(r=>r.json())
+.then(d=>{
+document.getElementById('live-card')?.remove();
+if(d.live && d.videoId){
+const live=document.createElement('div');
+live.className='video-card';
+live.id='live-card';
+live.innerHTML=`
+<iframe src="https://www.youtube.com/embed/${d.videoId}?autoplay=1"></iframe>
+<div class="live-badge">🔴 LIVE NOW</div>
+`;
+videosContainer.prepend(live);
+}
+});
+}
+
+/* REGULAR VIDEOS (7) */
+[
 ["0QwKo-mssxc","Perry da Artist - Bad Freak"],
 ["pInxfriRH_w","Mr. Program - Rise-in-Glory"],
 ["cXzqzTYxbsQ","Denton - Furious (RAW)"],
@@ -221,24 +230,15 @@ const videos=[
 ["QdFS99yYcDE","Denton - Wiser"],
 ["pmSFR_ohjJk","Denton - PARRAT"],
 ["WTW5qQPIgX0","Cocono Bwai - Wielo Wielo"]
-];
-const vc=document.getElementById('videos-container');
-videos.forEach(v=>{
+].forEach(v=>{
 const d=document.createElement('div');
 d.className='video-card';
 d.innerHTML=`<iframe src="https://www.youtube.com/embed/${v[0]}"></iframe><div class="video-title">${v[1]}</div>`;
-vc.appendChild(d);
+videosContainer.appendChild(d);
 });
 
-/* PARTICLES */
-const p=document.getElementById('particles');
-for(let i=0;i<70;i++){
-const s=document.createElement('span');
-s.style.left=Math.random()*100+'%';
-s.style.animationDuration=(6+Math.random()*10)+'s';
-s.style.animationDelay=Math.random()*5+'s';
-p.appendChild(s);
-}
+checkLive();
+setInterval(checkLive,30000);
 </script>
 
 </body>
