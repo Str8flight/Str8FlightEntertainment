@@ -29,15 +29,11 @@ padding:15px 24px;background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);
 transition:.3s;
 }
 body.light .navbar{background:rgba(255,255,255,0.9);}
-
 .logo{display:flex;align-items:center;gap:10px;}
 .logo img{height:42px;}
 .logo span{font-family:'Montserrat',sans-serif;font-size:1.4em;background:linear-gradient(90deg,#b36b00,#ff9c3b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .flag{height:26px;}
 #theme-toggle{cursor:pointer;font-size:1.3em;}
-#live-badge{display:none;margin-left:8px;padding:2px 6px;background:red;color:#fff;font-size:0.8em;border-radius:6px;font-weight:700;}
-
-/* NAV LIST */
 .nav-list{list-style:none;display:flex;gap:24px;}
 .nav-list a{color:#b36b00;font-weight:700;}
 .menu-toggle{display:none;flex-direction:column;cursor:pointer;}
@@ -66,6 +62,69 @@ body.light .hero-header{background:linear-gradient(135deg,#fff,#ddd);}
 .particles span{position:absolute;width:6px;height:6px;background:#b36b00;border-radius:50%;opacity:.7;animation:floatUp linear infinite;filter:drop-shadow(0 0 6px #b36b00);}
 @keyframes floatUp{from{transform:translateY(100vh);opacity:.8;}to{transform:translateY(-120vh);opacity:0;}}
 
+/* ===== LIVE SECTION ===== */
+#live-section{
+  display:none; /* hidden when not live */
+  max-width:1400px;margin:40px auto 20px;padding:0 20px;
+  opacity:0;
+  transform:translateY(-40px);
+  transition:opacity 0.6s ease, transform 0.6s ease;
+}
+#live-section.show{
+  display:block;
+  opacity:1;
+  transform:translateY(0);
+}
+#live-section .video-card{
+  border:2px solid #b36b00;
+  box-shadow:0 0 35px #b36b00;
+  border-radius:16px;
+  transition:.3s;
+}
+#live-section .video-card iframe{
+  width:100%;height:300px;border-radius:16px;
+  border:2px solid #b36b00;
+  box-shadow:0 0 25px #b36b00;
+}
+#live-badge{
+  display:inline-block;
+  margin-left:8px;
+  padding:2px 6px;
+  background:red;
+  color:#fff;
+  font-size:0.9em;
+  border-radius:6px;
+  font-weight:700;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse{
+  0%{transform:scale(1);opacity:1;}
+  50%{transform:scale(1.3);opacity:0.7;}
+  100%{transform:scale(1);opacity:1;}
+}
+
+/* ===== LIVE TOAST ===== */
+#live-toast{
+  position:fixed;
+  top:-60px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#b36b00;
+  color:#fff;
+  padding:12px 24px;
+  border-radius:12px;
+  font-weight:700;
+  font-size:1.1em;
+  box-shadow:0 0 15px rgba(179,107,0,.6);
+  z-index:2000;
+  transition:top 0.5s ease, opacity 0.5s ease;
+  opacity:0;
+}
+#live-toast.show{
+  top:20px;
+  opacity:1;
+}
+
 /* ===== PAGE CONTENT ===== */
 .page-container{max-width:1400px;margin:40px auto 70px;padding:0 20px;display:flex;gap:40px;}
 .column{background:#141414;padding:30px;border-radius:18px;box-shadow:0 0 25px rgba(179,107,0,.4);transition:background 0.3s, box-shadow 0.3s;}
@@ -75,11 +134,6 @@ body.light .column{background:#fff;}
 .column h2{color:#b36b00;margin-bottom:15px;text-shadow:0 0 8px #b36b00;}
 .column p{margin-bottom:15px;line-height:1.7;}
 .section-title{text-align:center;font-size:2.2em;margin-bottom:30px;color:#b36b00;text-shadow:0 0 10px #b36b00;}
-
-/* ===== LIVE SECTION ===== */
-#live-section { display:none; margin-bottom:40px; }
-#live-section iframe { width:100%; height:420px; border:none; border-radius:16px; }
-@media(max-width:768px){ #live-section iframe { height:240px; } }
 
 /* VIDEOS */
 .videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;}
@@ -96,7 +150,6 @@ body.light footer{background:#f4f4f4;color:#111;}
 @media(max-width:768px){iframe{height:200px;}}
 </style>
 </head>
-
 <body class="dark">
 
 <!-- NAVBAR -->
@@ -106,7 +159,6 @@ body.light footer{background:#f4f4f4;color:#111;}
     <span>STR8 FLIGHT</span>
     <img src="https://str8flight.github.io/belize-flag.png" class="flag" alt="Belize Flag">
     <i class="fas fa-sun" id="theme-toggle"></i>
-    <span id="live-badge">LIVE 🔴</span>
   </div>
   <div class="menu-toggle" id="menuBtn"><span></span><span></span><span></span></div>
   <ul class="nav-list">
@@ -127,6 +179,17 @@ body.light footer{background:#f4f4f4;color:#111;}
   </div>
 </header>
 
+<!-- LIVE TOAST -->
+<div id="live-toast">LIVE NOW 🔴 Watch the stream!</div>
+
+<!-- LIVE SECTION -->
+<div id="live-section">
+  <h2 class="section-title">LIVE NOW <span id="live-badge">🔴</span></h2>
+  <div class="video-card" id="live-card">
+    <iframe src="" allowfullscreen></iframe>
+  </div>
+</div>
+
 <!-- PAGE CONTENT -->
 <div class="page-container">
 
@@ -138,20 +201,12 @@ body.light footer{background:#f4f4f4;color:#111;}
     <p>Str8 Flight Entertainment also engages with local communities through events, workshops, and collaborations.</p>
   </div>
 
-  <!-- CENTER COLUMN -->
+  <!-- VIDEOS -->
   <div class="column center">
-
-    <!-- LIVE SECTION -->
-    <section id="live-section">
-      <h2 style="text-align:center;color:red;">🔴 Live Now</h2>
-      <div id="live-container"></div>
-    </section>
-
-    <!-- FEATURED VIDEOS -->
     <h2 class="section-title" id="videos">Featured Music Videos</h2>
     <div class="videos" id="videos-container"></div>
-
   </div>
+
 </div>
 
 <footer>© <span id="year"></span> Str8 Flight Entertainment • Belize</footer>
@@ -183,7 +238,7 @@ for(let i=0;i<70;i++){
   particlesContainer.appendChild(dot);
 }
 
-// Featured videos
+// Videos
 const videosContainer = document.getElementById('videos-container');
 const videosList = [
   ["0QwKo-mssxc","Perry da Artist - Bad Freak"],
@@ -202,36 +257,38 @@ videosList.forEach(v=>{
   videosContainer.appendChild(div);
 });
 
-// LIVE SECTION DETECTION + NAVBAR BADGE
-let liveActive = false;
-const liveSection = document.getElementById("live-section");
-const liveContainer = document.getElementById("live-container");
-const liveBadge = document.getElementById("live-badge");
+// Live detection (polls every 10s)
 const CHANNEL_ID = "UCp2UwspaBTvuEDMe9kx3aoA";
+const liveSection = document.getElementById('live-section');
+const liveCard = document.getElementById('live-card');
+const liveToast = document.getElementById('live-toast');
+let wasLive = false;
+
+function showToast(){
+  liveToast.classList.add('show');
+  setTimeout(()=>{ liveToast.classList.remove('show'); }, 5000);
+}
 
 function checkLive(){
-  fetch(`https://str8flight-live-api.vercel.app/api/checkLive?channelId=${CHANNEL_ID}`, { cache: "no-store" })
-    .then(res => res.json())
-    .then(data => {
-      if (data.live && !liveActive) {
-        // Show live section
-        liveContainer.innerHTML = `<iframe src="https://www.youtube.com/embed/${data.videoId}?autoplay=1&mute=1" allow="autoplay" allowfullscreen></iframe>`;
-        liveSection.style.display = "block";
-        // Show navbar badge
-        liveBadge.style.display = "inline-block";
-        liveActive = true;
-      } else if (!data.live && liveActive) {
-        // Hide live section
-        liveContainer.innerHTML = "";
-        liveSection.style.display = "none";
-        // Hide navbar badge
-        liveBadge.style.display = "none";
-        liveActive = false;
+  fetch(`https://str8flight-live-api.vercel.app/api/live?channelId=${CHANNEL_ID}`)
+    .then(r => r.json())
+    .then(d => {
+      if(d.live && d.videoId){
+        liveSection.classList.add('show');
+        liveCard.querySelector('iframe').src = `https://www.youtube.com/embed/${d.videoId}?autoplay=1`;
+        if(!wasLive){
+          showToast();
+          wasLive = true;
+        }
+      } else {
+        liveSection.classList.remove('show');
+        liveCard.querySelector('iframe').src = '';
+        wasLive = false;
       }
-    }).catch(()=>{});
+    }).catch(e=>console.error(e));
 }
 checkLive();
-setInterval(checkLive, 30000); // poll every 30s
+setInterval(checkLive,10000); // poll every 10 seconds
 </script>
 
 </body>
