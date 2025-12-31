@@ -4,48 +4,147 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy | Str8 Flight Entertainment</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+/* ===== THEME VARIABLES ===== */
+:root{
+  --bg-color:#0b0b0b;
+  --text-color:#fff;
+  --accent-color:#b36b00;
+  --accent-hover:#ff9c3b;
+  --card-bg:#1a1a1a;
+}
+
+/* ===== RESET ===== */
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Roboto',sans-serif;background:#0b0b0b;color:#fff;line-height:1.7;overflow-x:hidden;}
-a{text-decoration:none;}
-.navbar {position: fixed; top:0; width:100%; z-index:100; display:flex; justify-content: space-between; align-items: center; padding:15px 20px; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);}
-.navbar .logo {display:flex;align-items:center;gap:10px;}
-.navbar .logo img {width:50px;}
-.menu-toggle {display:none; flex-direction: column; cursor:pointer;}
-.menu-toggle span {background:#b36b00; height:3px; width:25px; margin:4px 0; transition:0.3s;}
-.nav-list {list-style:none; display:flex; gap:25px;}
-.nav-list li a {color:#b36b00; font-weight:700; transition:0.3s;}
-.nav-list li a:hover {color:#ff9c3b;}
-@media(max-width:768px){.menu-toggle {display:flex;}
-.nav-list {position:absolute; top:65px; right:0; width:220px; background:#1a1a1a; flex-direction: column; gap:0; overflow:hidden; max-height:0; transition:max-height 0.3s ease-in; border-radius:0 0 10px 10px;}
-.nav-list.active{max-height:500px;}
-.nav-list li{border-bottom:1px solid #b36b00;}
-.nav-list li a{padding:12px 20px; display:block;}}
+body{
+  font-family:'Roboto',sans-serif;
+  background:var(--bg-color);
+  color:var(--text-color);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+a{text-decoration:none}
 
-/* HERO */
-.hero-header {text-align:center;padding:120px 20px 50px; background:linear-gradient(135deg,#0b0b0b,#1a1a1a);position:relative;overflow:hidden;}
-.hero-header h1{font-family:'Montserrat',sans-serif;font-size:3em;color:#b36b00;margin-bottom:10px;}
-.hero-header p{font-size:1.1em;color:#fff;max-width:600px;margin:0 auto;}
-@keyframes fadeInDown {0%{opacity:0;transform:translateY(-30px);}100%{opacity:1;transform:translateY(0);}}
-@keyframes fadeInUp {0%{opacity:0;transform:translateY(30px);}100%{opacity:1;transform:translateY(0);}}
+/* ===== NAVBAR ===== */
+.navbar{
+  position:fixed;top:0;width:100%;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:15px 20px;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(5px);
+}
+.logo{display:flex;align-items:center;gap:10px}
+.logo img{width:50px}
 
-.privacy-container{max-width:900px;margin:40px auto;padding:30px;background:#1a1a1a;border-radius:16px;box-shadow:0 0 20px #b36b00;}
-.privacy-container h2{color:#b36b00;margin-bottom:20px;text-align:center;text-shadow:0 0 8px #b36b00;}
-.privacy-container p{margin-bottom:15px; line-height:1.6;}
+.menu-toggle{
+  display:none;
+  flex-direction:column;
+  cursor:pointer;
+}
+.menu-toggle span{
+  background:var(--accent-color);
+  height:3px;width:25px;margin:4px 0;
+}
 
-/* FOOTER */
-footer{background:#0b0b0b;color:#b36b00;text-align:center;padding:25px 10px;font-size:0.9em;box-shadow:0 -3px 8px rgba(179,107,0,0.3);text-shadow:0 0 4px #b36b00;}
+.nav-list{
+  list-style:none;
+  display:flex;
+  gap:25px;
+  align-items:center;
+}
+.nav-list li a{
+  color:var(--accent-color);
+  font-weight:700;
+  transition:.3s;
+}
+.nav-list li a:hover{color:var(--accent-hover)}
+
+.theme-btn{
+  background:none;
+  border:none;
+  font-size:1.2em;
+  cursor:pointer;
+  color:var(--accent-color);
+}
+
+@media(max-width:768px){
+  .menu-toggle{display:flex}
+  .nav-list{
+    position:absolute;
+    top:65px;right:0;
+    width:220px;
+    background:var(--bg-color);
+    flex-direction:column;
+    max-height:0;
+    overflow:hidden;
+    transition:.3s;
+    border-radius:0 0 10px 10px;
+    box-shadow:0 0 15px var(--accent-color);
+  }
+  .nav-list.active{max-height:500px}
+  .nav-list li{border-bottom:1px solid var(--accent-color)}
+  .nav-list li a{padding:12px 20px;display:block}
+}
+
+/* ===== HERO ===== */
+.hero-header{
+  text-align:center;
+  padding:120px 20px 50px;
+  background:linear-gradient(135deg,var(--bg-color),#1a1a1a);
+}
+.hero-header h1{
+  font-family:'Montserrat',sans-serif;
+  font-size:3em;
+  color:var(--accent-color);
+}
+.hero-header p{
+  max-width:600px;
+  margin:10px auto 0;
+}
+
+/* ===== CONTENT ===== */
+.privacy-container{
+  max-width:900px;
+  margin:40px auto;
+  padding:30px;
+  background:var(--card-bg);
+  border-radius:16px;
+  box-shadow:0 0 20px var(--accent-color);
+}
+.privacy-container h2{
+  color:var(--accent-color);
+  margin:25px 0 10px;
+}
+.privacy-container p{opacity:.9}
+
+/* ===== FOOTER ===== */
+footer{
+  background:var(--bg-color);
+  color:var(--accent-color);
+  text-align:center;
+  padding:25px 10px;
+  box-shadow:0 -3px 8px rgba(179,107,0,.3);
+}
 </style>
 </head>
+
 <body>
 
-<!-- NAVBAR -->
+<!-- ===== NAV ===== -->
 <nav class="navbar">
-  <div class="logo"><img src="https://str8flight.github.io/str8flight-logo.png" alt="Logo"><span>Str8 Flight</span></div>
-  <div class="menu-toggle" id="mobile-menu"><span></span><span></span><span></span></div>
+  <div class="logo">
+    <img src="https://str8flight.github.io/str8flight-logo.png" alt="Logo">
+    <span>Str8 Flight</span>
+  </div>
+
+  <div class="menu-toggle" id="mobile-menu">
+    <span></span><span></span><span></span>
+  </div>
+
   <ul class="nav-list">
     <li><a href="index.html">Home</a></li>
     <li><a href="index.html#about">About</a></li>
@@ -53,27 +152,32 @@ footer{background:#0b0b0b;color:#b36b00;text-align:center;padding:25px 10px;font
     <li><a href="services.html">Services</a></li>
     <li><a href="contact.html">Contact</a></li>
     <li><a href="privacy.html">Privacy</a></li>
+    <li><button id="themeBtn" class="theme-btn">🌙</button></li>
   </ul>
 </nav>
 
-<!-- HERO -->
+<!-- ===== HERO ===== -->
 <header class="hero-header">
   <h1>Privacy Policy</h1>
-  <p>Learn how Str8 Flight Entertainment collects, uses, and protects your personal data while browsing our website.</p>
+  <p>How Str8 Flight Entertainment collects, uses, and protects your data.</p>
 </header>
 
-<!-- CONTENT -->
+<!-- ===== CONTENT ===== -->
 <div class="privacy-container">
   <h2>Data Collection</h2>
   <p>We may collect personal information such as your name and email when you submit forms.</p>
+
   <h2>Usage of Information</h2>
   <p>Your information is used solely to respond to inquiries and provide services.</p>
+
   <h2>Cookies</h2>
-  <p>Our website may use cookies to enhance user experience. You can disable cookies in your browser.</p>
+  <p>Cookies may be used to improve user experience. You can disable cookies in your browser.</p>
+
   <h2>Third-Party Services</h2>
-  <p>We use services like Google AdSense, which may collect anonymous usage data.</p>
+  <p>We use services like Google AdSense which may collect anonymous usage data.</p>
+
   <h2>Security</h2>
-  <p>We implement standard security measures to protect your data from unauthorized access.</p>
+  <p>We apply standard security measures to protect your data.</p>
 </div>
 
 <footer>
@@ -81,10 +185,48 @@ footer{background:#0b0b0b;color:#b36b00;text-align:center;padding:25px 10px;font
 </footer>
 
 <script>
-// Hamburger toggle
-const mobileMenu=document.getElementById('mobile-menu');
-const navList=document.querySelector('.nav-list');
-mobileMenu.addEventListener('click',()=>{navList.classList.toggle('active');});
+// Mobile menu
+const menu=document.getElementById('mobile-menu');
+const nav=document.querySelector('.nav-list');
+menu.onclick=()=>nav.classList.toggle('active');
+
+// ===== DARK / LIGHT MODE =====
+const themeBtn=document.getElementById('themeBtn');
+
+const dark={
+  '--bg-color':'#0b0b0b',
+  '--text-color':'#fff',
+  '--accent-color':'#b36b00',
+  '--accent-hover':'#ff9c3b',
+  '--card-bg':'#1a1a1a'
+};
+const light={
+  '--bg-color':'#f5f5f5',
+  '--text-color':'#111',
+  '--accent-color':'#ff6f00',
+  '--accent-hover':'#ffa500',
+  '--card-bg':'#eee'
+};
+
+function setTheme(t){
+  for(let k in t){
+    document.documentElement.style.setProperty(k,t[k]);
+  }
+}
+
+function applyTheme(){
+  const mode=localStorage.getItem('theme')||'dark';
+  if(mode==='dark'){setTheme(dark);themeBtn.textContent='🌙'}
+  else{setTheme(light);themeBtn.textContent='☀️'}
+}
+
+themeBtn.onclick=()=>{
+  const mode=localStorage.getItem('theme')||'dark';
+  localStorage.setItem('theme',mode==='dark'?'light':'dark');
+  applyTheme();
+};
+
+applyTheme();
 </script>
 
 </body>
