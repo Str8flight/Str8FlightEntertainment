@@ -9,150 +9,111 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* RESET */
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-  font-family:'Roboto',sans-serif;
-  background:#0b0b0b;
-  color:#fff;
-  overflow-x:hidden;
-  transition: background 0.3s, color 0.3s;
-}
+/* ===== GLOBAL ===== */
+* {margin:0;padding:0;box-sizing:border-box;}
+body {font-family:'Roboto',sans-serif;background:#0b0b0b;color:#fff;overflow-x:hidden;transition:background 0.3s,color 0.3s;}
+a{text-decoration:none;}
 
-/* LIGHT MODE */
-body.light-mode {
-  background:#f5f5f5;
-  color:#111;
-}
-
-/* NAVBAR */
+/* ===== NAVBAR ===== */
 .navbar {
   position:fixed; top:0; left:0; width:100%; z-index:1000;
   display:flex; justify-content:space-between; align-items:center;
-  padding:15px 24px;
-  background:rgba(0,0,0,0.75);
-  backdrop-filter:blur(8px);
-  transition: background 0.3s;
+  padding:15px 24px; background:rgba(0,0,0,0.75); backdrop-filter:blur(8px); transition:background 0.3s;
 }
-body.light-mode .navbar { background: rgba(255,255,255,0.85); }
-
-.logo { display:flex; align-items:center; gap:10px; }
+.logo {
+  display:flex; align-items:center; gap:10px;
+}
 .logo img { height:42px; }
-.logo span {
-  font-family:'Montserrat',sans-serif; font-size:1.4em;
+#logo-text {
+  font-family:'Montserrat',sans-serif;
+  font-size:1.4em;
   background:linear-gradient(90deg,#b36b00,#ff9c3b);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  transition: all 0.3s;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  transition:background 0.3s,color 0.3s;
 }
-body.light-mode .logo span { background: linear-gradient(90deg,#ff9c3b,#b36b00); }
+.flag { height:26px; }
+.nav-list { list-style:none; display:flex; gap:24px; transition:color 0.3s;}
+.nav-list a { color:#b36b00; font-weight:700; text-shadow:0 0 6px #b36b00; transition:.3s; }
+.nav-list a:hover { color:#ff9c3b; text-shadow:0 0 12px #ff9c3b; }
+.menu-toggle {display:none; flex-direction:column; cursor:pointer;}
+.menu-toggle span {width:26px; height:3px; background:#b36b00; margin:4px 0; transition:.3s;}
+#theme-toggle {cursor:pointer;margin-left:15px;font-size:1.2em;color:#b36b00;transition:.3s;}
 
-/* MENU */
-.nav-list {
-  list-style:none; display:flex; gap:24px;
-}
-.nav-list a {
-  color:#b36b00; font-weight:700; text-shadow:0 0 6px #b36b00;
-  transition:.3s; position:relative; letter-spacing:0.8px; text-transform:uppercase;
-}
-.nav-list a::after {
-  content:''; position:absolute; left:0; bottom:-4px;
-  width:0%; height:2px; background:#ff9c3b; transition:.3s;
-}
-.nav-list a:hover::after { width:100%; }
-body.light-mode .nav-list a { color:#ff9c3b; text-shadow:0 0 6px #ff9c3b; }
-
-/* MOBILE MENU */
-.menu-toggle { display:none; flex-direction:column; cursor:pointer; }
-.menu-toggle span { width:26px; height:3px; background:#b36b00; margin:4px 0; transition:0.3s; }
-body.light-mode .menu-toggle span { background:#ff9c3b; }
-
+/* ===== MOBILE NAV ===== */
 @media(max-width:768px){
   .menu-toggle { display:flex; }
   .nav-list {
     position:absolute; top:65px; right:20px; width:220px;
     background:#111; flex-direction:column; max-height:0; overflow:hidden;
-    transition:max-height 0.35s ease; border-radius:0 0 12px 12px;
-    box-shadow:0 0 40px rgba(179,107,0,0.6);
+    transition:max-height .35s ease; border-radius:0 0 12px 12px;
+    box-shadow:0 0 30px rgba(179,107,0,.6);
   }
   .nav-list.active { max-height:500px; }
-  .nav-list li { border-bottom:1px solid rgba(179,107,0,0.4); }
+  .nav-list li { border-bottom:1px solid rgba(179,107,0,.4); }
   .nav-list a { padding:14px 20px; display:block; }
-  body.light-mode .nav-list { background:#fff; box-shadow:0 0 40px rgba(255,156,59,0.6); }
 }
 
-/* LIGHT/DARK TOGGLE */
-#modeToggle {
-  font-size:1.2em; cursor:pointer; margin-left:12px;
-  transition: color 0.3s;
-}
-body.light-mode #modeToggle { color:#ff9c3b; }
+/* ===== HERO ===== */
+.hero-header {position:relative;padding:150px 20px 90px;text-align:center;background:linear-gradient(135deg,#0b0b0b,#161616);overflow:hidden;}
+.hero-content {position:relative; z-index:3;}
+.hero-header h1 {font-family:'Montserrat',sans-serif;font-size:3em;margin-bottom:10px;text-shadow:0 0 14px #b36b00;animation:fadeDown 1.2s ease forwards;}
+.hero-header p {font-size:1.2em;animation:fadeUp 1.4s ease forwards;}
 
-/* HERO */
-.hero-header { position:relative; padding:150px 20px 90px; text-align:center; background:linear-gradient(135deg,#0b0b0b,#161616); overflow:hidden; transition: background 0.3s; }
-body.light-mode .hero-header { background: linear-gradient(135deg,#f5f5f5,#e0e0e0); }
+/* ===== PARTICLES ===== */
+.particles {position:absolute; inset:0; z-index:1; pointer-events:none;}
+.particles span {position:absolute;width:6px;height:6px;background:#b36b00;border-radius:50%;opacity:.7;animation:floatUp linear infinite;filter:drop-shadow(0 0 6px #b36b00);}
+@keyframes floatUp {from{transform:translateY(100vh);opacity:.8;} to{transform:translateY(-120vh);opacity:0;}}
+@keyframes fadeDown {from{opacity:0;transform:translateY(-30px);} to{opacity:1;transform:translateY(0);}}
+@keyframes fadeUp {from{opacity:0;transform:translateY(30px);} to{opacity:1;transform:translateY(0);}}
 
-.hero-content { position:relative; z-index:3; }
-.hero-header h1 { font-family:'Montserrat',sans-serif; font-size:3em; margin-bottom:10px; text-shadow:0 0 14px #b36b00; animation:fadeDown 1.2s ease forwards; transition:text-shadow 0.3s; }
-body.light-mode .hero-header h1 { text-shadow:0 0 14px #ff9c3b; }
-
-.hero-header p { font-size:1.2em; animation:fadeUp 1.4s ease forwards; }
-
-/* PARTICLES */
-.particles { position:absolute; inset:0; z-index:1; pointer-events:none; }
-.particles span { position:absolute; width:6px; height:6px; background:#b36b00; border-radius:50%; opacity:.7; animation:floatUp linear infinite; filter:drop-shadow(0 0 6px #b36b00); }
-body.light-mode .particles span { filter:drop-shadow(0 0 6px #ff9c3b); background:#ff9c3b; }
-
-@keyframes floatUp { from {transform:translateY(100vh); opacity:.8;} to {transform:translateY(-120vh); opacity:0;} }
-@keyframes fadeDown { from { opacity:0; transform:translateY(-30px); } to { opacity:1; transform:translateY(0); } }
-@keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
-
-/* PAGE LAYOUT */
+/* ===== PAGE LAYOUT ===== */
 .page-container { max-width:1400px; margin:70px auto; padding:0 20px; display:flex; gap:50px; }
-.column { background:#141414; padding:30px; border-radius:18px; box-shadow:0 0 25px rgba(179,107,0,.4); transition: box-shadow 0.3s; }
+.column { background:#141414; padding:30px; border-radius:18px; box-shadow:0 0 25px rgba(179,107,0,.4); transition:.3s; }
 .column:hover { box-shadow:0 0 35px #b36b00,0 0 60px #8a4c00; }
-body.light-mode .column { background:#fff; box-shadow:0 0 25px rgba(255,156,59,.4); }
 .left { flex:1; } .center { flex:3; }
 .column h2 { color:#b36b00; margin-bottom:15px; text-shadow:0 0 8px #b36b00; }
-body.light-mode .column h2 { color:#ff9c3b; text-shadow:0 0 8px #ff9c3b; }
 .column p { margin-bottom:15px; }
 
-/* VIDEOS */
+/* ===== VIDEOS ===== */
 .section-title { text-align:center; font-size:2.2em; margin-bottom:30px; color:#b36b00; text-shadow:0 0 10px #b36b00; }
-body.light-mode .section-title { color:#ff9c3b; text-shadow:0 0 10px #ff9c3b; }
-
 .videos { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; }
 .video-card { background:#0f0f0f; padding:18px; border-radius:16px; box-shadow:0 0 18px #b36b00; transition:.3s; }
 .video-card:hover { box-shadow:0 0 30px #b36b00,0 0 50px #8a4c00; }
-body.light-mode .video-card { background:#fff; box-shadow:0 0 18px #ff9c3b; }
 iframe { width:100%; height:260px; border:none; border-radius:12px; }
 .video-title { margin-top:10px; text-align:center; font-weight:700; text-shadow:0 0 5px #b36b00; }
-body.light-mode .video-title { text-shadow:0 0 5px #ff9c3b; }
 
-/* FOOTER */
-footer { text-align:center; padding:30px; color:#b36b00; background:#0b0b0b; margin-top:70px; transition: color 0.3s, background 0.3s; }
-body.light-mode footer { color:#ff9c3b; background:#f5f5f5; }
+/* ===== FOOTER ===== */
+footer { text-align:center; padding:30px; color:#b36b00; background:#0b0b0b; margin-top:70px; }
 
-/* RESPONSIVE */
+/* ===== RESPONSIVE ===== */
 @media(max-width:1024px){ .page-container { flex-direction:column; } }
 @media(max-width:768px){ iframe { height:200px; } }
 
+/* ===== LIGHT MODE ===== */
+body.light { background:#f9f9f9; color:#111; }
+body.light .navbar { background:rgba(255,255,255,0.9); }
+body.light #logo-text { background:linear-gradient(90deg,#b36b00,#ff9c3b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+body.light .nav-list a { color:#b36b00; text-shadow:none; }
+body.light .video-card { background:#f5f5f5; box-shadow:0 0 15px #b36b00; }
+body.light .column { background:#f0f0f0; box-shadow:0 0 15px #b36b00; }
+body.light footer { background:#f9f9f9; color:#b36b00; }
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <nav class="navbar">
   <div class="logo">
     <img src="str8flight-logo.png">
-    <span>STR8 FLIGHT</span>
+    <span id="logo-text">STR8 FLIGHT</span>
     <img src="belize-flag.png" class="flag">
   </div>
 
-  <div style="display:flex;align-items:center">
-    <div class="menu-toggle" id="menuBtn">
-      <span></span><span></span><span></span>
-    </div>
-    <div id="modeToggle"><i class="fas fa-sun"></i></div>
+  <div style="display:flex; align-items:center;">
+    <div id="theme-toggle"><i class="fas fa-moon"></i></div>
+    <div class="menu-toggle" id="menuBtn"><span></span><span></span><span></span></div>
   </div>
 
   <ul class="nav-list">
@@ -164,6 +125,7 @@ body.light-mode footer { color:#ff9c3b; background:#f5f5f5; }
   </ul>
 </nav>
 
+<!-- HERO -->
 <header class="hero-header">
   <div class="particles" id="particles"></div>
   <div class="hero-content">
@@ -172,8 +134,8 @@ body.light-mode footer { color:#ff9c3b; background:#f5f5f5; }
   </div>
 </header>
 
+<!-- PAGE CONTENT -->
 <div class="page-container">
-
   <div class="column left" id="about">
     <h2>About</h2>
     <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>.</p>
@@ -192,14 +154,7 @@ body.light-mode footer { color:#ff9c3b; background:#f5f5f5; }
       <div class="video-card"><iframe src="https://www.youtube.com/embed/pmSFR_ohjJk"></iframe><div class="video-title">Denton - PARRAT</div></div>
       <div class="video-card"><iframe src="https://www.youtube.com/embed/WTW5qQPIgX0"></iframe><div class="video-title">Cocono Bwai - Wielo Wielo</div></div>
     </div>
-
-    <h2 class="section-title">Live Now</h2>
-    <div id="live-stream" style="display:none;">
-      <iframe id="liveFrame" src="" allowfullscreen></iframe>
-    </div>
-
   </div>
-
 </div>
 
 <footer>
@@ -207,12 +162,32 @@ body.light-mode footer { color:#ff9c3b; background:#f5f5f5; }
 </footer>
 
 <script>
-/* mobile nav */
+// ===== MOBILE NAV =====
 document.getElementById('menuBtn').onclick = () => {
   document.querySelector('.nav-list').classList.toggle('active');
 };
 
-/* particles */
+// ===== LIGHT/DARK TOGGLE =====
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = themeToggle.querySelector('i');
+themeToggle.onclick = () => {
+  document.body.classList.toggle('light');
+  if(document.body.classList.contains('light')){
+    themeIcon.classList.replace('fa-moon','fa-sun');
+    localStorage.setItem('theme','light');
+  } else {
+    themeIcon.classList.replace('fa-sun','fa-moon');
+    localStorage.setItem('theme','dark');
+  }
+};
+
+// ===== LOAD SAVED THEME =====
+if(localStorage.getItem('theme')==='light'){
+  document.body.classList.add('light');
+  themeIcon.classList.replace('fa-moon','fa-sun');
+}
+
+// ===== PARTICLES =====
 const particles = document.getElementById('particles');
 for(let i=0;i<70;i++){
   const dot = document.createElement('span');
@@ -222,27 +197,23 @@ for(let i=0;i<70;i++){
   particles.appendChild(dot);
 }
 
-/* LIGHT/DARK MODE */
-const modeBtn = document.getElementById('modeToggle');
-if(localStorage.getItem('mode') === 'light'){
-  document.body.classList.add('light-mode');
-  modeBtn.innerHTML = '<i class="fas fa-moon"></i>';
-}
-modeBtn.onclick = () => {
-  document.body.classList.toggle('light-mode');
-  const isLight = document.body.classList.contains('light-mode');
-  modeBtn.innerHTML = isLight ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
-  localStorage.setItem('mode', isLight ? 'light' : 'dark');
-};
-
-/* YOUTUBE LIVE CHECK (Serverless API) */
+// ===== YOUTUBE LIVE CHECK =====
 const CHANNEL_ID="UCp2UwspaBTvuEDMe9kx3aoA";
 fetch(`https://str8flight-live-api.vercel.app/api/live?channelId=${CHANNEL_ID}`)
 .then(r=>r.json())
 .then(d=>{
   if(d.live && d.videoId){
-    document.getElementById('liveFrame').src = `https://www.youtube.com/embed/${d.videoId}?autoplay=1`;
-    document.getElementById('live-stream').style.display = 'block';
+    const liveFrame = document.createElement('iframe');
+    liveFrame.id = 'liveFrame';
+    liveFrame.src = `https://www.youtube.com/embed/${d.videoId}?autoplay=1`;
+    liveFrame.width='100%';
+    liveFrame.height='360';
+    liveFrame.style.border='none';
+    const liveSection = document.createElement('div');
+    liveSection.id = 'live-stream';
+    liveSection.style.margin='30px 0';
+    liveSection.appendChild(liveFrame);
+    document.querySelector('.center').prepend(liveSection);
   }
 });
 </script>
