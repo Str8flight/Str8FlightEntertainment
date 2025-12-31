@@ -58,16 +58,46 @@ body.light .nav-list{background:#fff}
 
 /* HERO */
 .hero{
+position:relative;
 padding:110px 20px 40px;text-align:center;
-background:linear-gradient(135deg,#0b0b0b,#161616)
+background:linear-gradient(135deg,#0b0b0b,#161616);
+overflow:hidden;
 }
 body.light .hero{background:linear-gradient(135deg,#fff,#ddd)}
 .hero h1{
 font-family:'Montserrat',sans-serif;
 font-size:3em;color:#b36b00;
-text-shadow:0 0 14px #b36b00
+text-shadow:0 0 14px #b36b00;
+position:relative;z-index:2;
 }
-.hero p{font-size:1.2em;max-width:900px;margin:15px auto}
+.hero p{
+font-size:1.2em;
+max-width:900px;
+margin:15px auto;
+position:relative;z-index:2;
+}
+
+/* PARTICLES */
+.particles{
+position:absolute;
+inset:0;
+z-index:1;
+pointer-events:none;
+}
+.particles span{
+position:absolute;
+width:6px;
+height:6px;
+background:#b36b00;
+border-radius:50%;
+opacity:.7;
+filter:drop-shadow(0 0 6px #b36b00);
+animation:floatUp linear infinite;
+}
+@keyframes floatUp{
+from{transform:translateY(100vh);opacity:.8}
+to{transform:translateY(-120vh);opacity:0}
+}
 
 /* CONTENT */
 .page-container{
@@ -141,6 +171,7 @@ body.light footer{background:#f4f4f4;color:#111}
 
 <!-- HERO -->
 <section class="hero">
+  <div class="particles" id="particles"></div>
   <h1>Str8 Flight Entertainment</h1>
   <p>Belize-based platform promoting original music, independent artists, and Caribbean creativity.</p>
 </section>
@@ -148,7 +179,6 @@ body.light footer{background:#f4f4f4;color:#111}
 <!-- CONTENT -->
 <div class="page-container">
 
-  <!-- ABOUT (RESTORED FULLY) -->
   <div class="column left" id="about">
     <h2>About</h2>
     <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>.</p>
@@ -156,7 +186,6 @@ body.light footer{background:#f4f4f4;color:#111}
     <p>Str8 Flight Entertainment also engages with local communities through events, workshops, and collaborations.</p>
   </div>
 
-  <!-- VIDEOS -->
   <div class="column center">
     <h2 class="section-title" id="videos">Featured Music Videos</h2>
     <div class="videos" id="videos-container"></div>
@@ -183,7 +212,7 @@ localStorage.setItem('theme',t);
 toggle.onclick=()=>setTheme(document.body.classList.contains('light')?'dark':'light');
 setTheme(localStorage.getItem('theme')||'dark');
 
-/* VIDEOS (7) */
+/* VIDEOS */
 const videos=[
 ["0QwKo-mssxc","Perry da Artist - Bad Freak"],
 ["pInxfriRH_w","Mr. Program - Rise-in-Glory"],
@@ -193,7 +222,6 @@ const videos=[
 ["pmSFR_ohjJk","Denton - PARRAT"],
 ["WTW5qQPIgX0","Cocono Bwai - Wielo Wielo"]
 ];
-
 const vc=document.getElementById('videos-container');
 videos.forEach(v=>{
 const d=document.createElement('div');
@@ -201,6 +229,16 @@ d.className='video-card';
 d.innerHTML=`<iframe src="https://www.youtube.com/embed/${v[0]}"></iframe><div class="video-title">${v[1]}</div>`;
 vc.appendChild(d);
 });
+
+/* PARTICLES */
+const p=document.getElementById('particles');
+for(let i=0;i<70;i++){
+const s=document.createElement('span');
+s.style.left=Math.random()*100+'%';
+s.style.animationDuration=(6+Math.random()*10)+'s';
+s.style.animationDelay=Math.random()*5+'s';
+p.appendChild(s);
+}
 </script>
 
 </body>
