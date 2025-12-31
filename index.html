@@ -19,17 +19,18 @@ body.light { background:#f5f5f5; color:#222; }
   position:fixed; top:0; width:100%; z-index:1000;
   display:flex; justify-content:space-between; align-items:center;
   padding:15px 24px; background:rgba(0,0,0,0.75); backdrop-filter:blur(8px);
+  transition: background 0.3s;
 }
 body.light .navbar { background:rgba(255,255,255,0.85); }
 
 .logo { display:flex; align-items:center; gap:10px; }
 .logo img { height:42px; }
 .logo span { font-family:'Montserrat',sans-serif; font-size:1.4em; background:linear-gradient(90deg,#b36b00,#ff9c3b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-
 .flag { height:26px; }
 
 /* NAV CONTROLS */
-.nav-controls { display:flex; align-items:center; gap:18px; }
+.nav-controls { display:flex; align-items:center; gap:12px; }
+/* Move theme toggle closer to flag */
 #theme-toggle { font-size:1.4em; color:#b36b00; cursor:pointer; transition:.3s; }
 body.light #theme-toggle { color:#ff9c3b; }
 
@@ -37,6 +38,8 @@ body.light #theme-toggle { color:#ff9c3b; }
 .nav-list { list-style:none; display:flex; gap:24px; }
 .nav-list a { color:#b36b00; font-weight:700; text-shadow:0 0 6px #b36b00; transition:.3s; }
 .nav-list a:hover { color:#ff9c3b; text-shadow:0 0 12px #ff9c3b; }
+body.light .nav-list a { color:#222; text-shadow:none; }
+body.light .nav-list a:hover { color:#ff9c3b; text-shadow:0 0 6px #ff9c3b; }
 
 /* MOBILE NAV */
 .menu-toggle { display:none; flex-direction:column; cursor:pointer; }
@@ -45,15 +48,16 @@ body.light .menu-toggle span { background:#ff9c3b; }
 
 @media(max-width:768px){
   .menu-toggle { display:flex; }
-  .nav-controls { gap:14px; }
+  .nav-controls { gap:10px; }
   .nav-list {
-    position:absolute; top:65px; right:20px; width:220px; background:#111;
-    flex-direction:column; max-height:0; overflow:hidden; transition:max-height .35s ease;
+    position:absolute; top:65px; right:20px; width:220px; flex-direction:column; max-height:0; overflow:hidden; transition:max-height .35s ease;
     border-radius:0 0 12px 12px; box-shadow:0 0 30px rgba(179,107,0,.6);
+    background:#111;
   }
   .nav-list.active { max-height:500px; }
   .nav-list li { border-bottom:1px solid rgba(179,107,0,.4); }
   .nav-list a { padding:14px 20px; display:block; }
+  body.light .nav-list { background:#fff; }
 }
 
 /* ================= HERO ================= */
@@ -109,22 +113,17 @@ body.light footer { background:#f5f5f5; color:#222; }
 
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar">
   <div class="logo">
     <img src="str8flight-logo.png" alt="Logo">
     <span id="logo-text">STR8 FLIGHT</span>
     <img src="belize-flag.png" class="flag" alt="Belize Flag">
+    <!-- Light/Dark toggle placed beside flag -->
+    <div id="theme-toggle"><i class="fas fa-moon"></i></div>
   </div>
 
-  <div class="nav-controls">
-    <!-- Light/Dark Toggle -->
-    <div id="theme-toggle"><i class="fas fa-moon"></i></div>
-
-    <!-- Hamburger -->
-    <div class="menu-toggle" id="menuBtn">
-      <span></span><span></span><span></span>
-    </div>
+  <div class="menu-toggle" id="menuBtn">
+    <span></span><span></span><span></span>
   </div>
 
   <ul class="nav-list">
@@ -136,7 +135,6 @@ body.light footer { background:#f5f5f5; color:#222; }
   </ul>
 </nav>
 
-<!-- HERO -->
 <header class="hero-header">
   <div class="particles" id="particles"></div>
   <div class="hero-content">
@@ -145,7 +143,6 @@ body.light footer { background:#f5f5f5; color:#222; }
   </div>
 </header>
 
-<!-- PAGE CONTENT -->
 <div class="page-container">
   <div class="column left" id="about">
     <h2>About</h2>
