@@ -5,48 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Services | Str8 Flight Entertainment</title>
 
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-
-<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 /* ===== GLOBAL ===== */
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Roboto',sans-serif; line-height:1.7; overflow-x:hidden; transition: background 0.3s, color 0.3s; }
+body { font-family:'Roboto',sans-serif; background:#0b0b0b; color:#fff; overflow-x:hidden; transition: background 0.3s, color 0.3s; }
 a { text-decoration:none; }
-body.light { background:#f4f4f4; color:#111; }
-body.dark { background:#0b0b0b; color:#fff; }
 
 /* ===== NAVBAR ===== */
 .navbar {
-  position: fixed; top:0; width:100%; z-index:1000;
+  position:fixed; top:0; left:0; width:100%; z-index:1000;
   display:flex; justify-content:space-between; align-items:center;
   padding:15px 24px; background:rgba(0,0,0,0.75); backdrop-filter:blur(8px);
   transition: background 0.3s;
 }
-body.light .navbar { background:rgba(255,255,255,0.9); }
+.logo-container { display:flex; align-items:center; gap:10px; }
+.logo-container img.logo { height:42px; }
+.logo-container span { font-family:'Montserrat',sans-serif; font-size:1.4em; background:linear-gradient(90deg,#b36b00,#ff9c3b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; transition: color 0.3s; }
+.flag-toggle { display:flex; align-items:center; gap:10px; }
 
-.navbar .logo {
-  display:flex; align-items:center; gap:10px;
-}
-.navbar .logo img { height:42px; }
-.navbar .logo span { font-family:'Montserrat',sans-serif; font-size:1.4em; font-weight:700; background:linear-gradient(90deg,#b36b00,#ff9c3b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-
-.navbar .logo img.flag, .navbar .logo i#theme-toggle { cursor:pointer; }
-
-.nav-list {
-  list-style:none; display:flex; gap:24px;
-}
-.nav-list a { color:#b36b00; font-weight:700; text-shadow:0 0 6px #b36b00; transition:0.3s; }
+/* NAV LINKS */
+.nav-list { list-style:none; display:flex; gap:24px; transition: background 0.3s; }
+.nav-list a { color:#b36b00; font-weight:700; text-shadow:0 0 6px #b36b00; transition:.3s; }
 .nav-list a:hover { color:#ff9c3b; text-shadow:0 0 12px #ff9c3b; }
 
-/* Hamburger Menu */
+/* MOBILE NAV */
 .menu-toggle { display:none; flex-direction:column; cursor:pointer; }
 .menu-toggle span { width:26px; height:3px; background:#b36b00; margin:4px 0; }
 
-/* MOBILE NAV */
 @media(max-width:768px){
   .menu-toggle { display:flex; }
 
@@ -55,46 +43,31 @@ body.light .navbar { background:rgba(255,255,255,0.9); }
     max-height:0; overflow:hidden; transition:max-height .35s ease, background 0.3s;
     border-radius:0 0 12px 12px; box-shadow:0 0 30px rgba(179,107,0,.6);
   }
-  body.light .nav-list { background:#fff; }
   .nav-list.active { max-height:500px; }
   .nav-list li { border-bottom:1px solid rgba(179,107,0,.4); }
-  body.light .nav-list li { border-bottom:1px solid #b36b00; }
-  .nav-list li a { padding:14px 20px; display:block; }
+  .nav-list a { padding:14px 20px; display:block; }
 
-  /* FIX FLAG + ICON ALIGNMENT */
-  .navbar .logo { flex-wrap: wrap; justify-content: flex-start; gap:8px; }
-  .navbar .logo img.flag, #theme-toggle { order: 1; margin-left:0; }
+  /* Align flag and dark/light closer to text */
+  .logo-container { flex-direction:row; justify-content:flex-start; }
+  .flag-toggle { margin-left:5px; }
 }
 
-/* ===== HERO ===== */
-.hero-header {
-  position:relative; padding:150px 20px 90px; text-align:center;
-  background:linear-gradient(135deg,#0b0b0b,#161616); overflow:hidden; transition: background 0.3s;
-}
-body.light .hero-header { background:linear-gradient(135deg,#fff,#eee); }
+/* LIGHT/DARK TOGGLE */
+#theme-toggle { cursor:pointer; font-size:1.3em; transition: color 0.3s; }
 
-.hero-header h1 { font-family:'Montserrat',sans-serif; font-size:3em; margin-bottom:10px; text-shadow:0 0 14px #b36b00; animation:fadeDown 1.2s ease forwards; }
-.hero-header p { font-size:1.2em; animation:fadeUp 1.4s ease forwards; }
-
-@keyframes fadeDown { from {opacity:0; transform:translateY(-30px);} to {opacity:1; transform:translateY(0);} }
-@keyframes fadeUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
+/* HERO */
+.hero-header { position:relative; padding:120px 20px 70px; text-align:center; background:linear-gradient(135deg,#0b0b0b,#161616); overflow:hidden; transition: background 0.3s; }
+.hero-header h1 { font-family:'Montserrat',sans-serif; font-size:2.8em; margin-bottom:12px; text-shadow:0 0 14px #b36b00; }
+.hero-header p { font-size:1.2em; margin-top:10px; }
 
 /* PARTICLES */
-#particles { position:absolute; inset:0; z-index:0; overflow:hidden; }
-#particles div { position:absolute; width:6px; height:6px; background:#b36b00; border-radius:50%; opacity:0.6; animation:moveParticles 10s linear infinite; }
-@keyframes moveParticles { 0%{transform:translateY(0) translateX(0);opacity:0.6;} 50%{opacity:1;} 100%{transform:translateY(-1200px) translateX(400px);opacity:0.2;} }
+.particles { position:absolute; inset:0; z-index:1; pointer-events:none; }
+.particles span { position:absolute; width:6px; height:6px; background:#b36b00; border-radius:50%; opacity:.7; animation:floatUp linear infinite; filter:drop-shadow(0 0 6px #b36b00); }
+@keyframes floatUp { from { transform:translateY(100vh); opacity:.8; } to { transform:translateY(-120vh); opacity:0; } }
 
-/* ===== SERVICES CARDS ===== */
-.services-container {
-  max-width:1200px; margin:50px auto; display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; padding:0 20px;
-}
-.service-card {
-  background:#1a1a1a; padding:30px; border-radius:16px;
-  box-shadow:0 0 15px rgba(179,107,0,0.5),0 0 30px rgba(138,76,0,0.3);
-  text-align:center; transition:transform 0.3s ease, box-shadow 0.3s ease, background 0.3s, color 0.3s;
-  opacity:0; transform:translateY(30px);
-}
+/* SERVICES CARDS */
+.services-container { max-width:1200px; margin:50px auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; padding:0 20px; }
+.service-card { background:#1a1a1a; padding:30px; border-radius:16px; box-shadow:0 0 15px rgba(179,107,0,0.5),0 0 30px rgba(138,76,0,0.3); text-align:center; transition:transform 0.3s ease, box-shadow 0.3s ease; opacity:0; transform:translateY(30px); }
 body.light .service-card { background:#fff; color:#111; box-shadow:0 0 15px rgba(179,107,0,0.3),0 0 30px rgba(138,76,0,0.2);}
 .service-card.visible { opacity:1; transform:translateY(0); transition:1s ease; }
 .service-card:hover { transform:translateY(-10px); box-shadow:0 0 25px #b36b00,0 0 50px #ff9c3b; }
@@ -104,11 +77,16 @@ body.light .service-card h3 { color:#b36b00; text-shadow:none; }
 body.light .service-card p { color:#111; }
 
 /* FOOTER */
-footer { text-align:center; padding:25px 10px; color:#b36b00; background:#0b0b0b; text-shadow:0 0 4px #b36b00; transition: background 0.3s, color 0.3s; }
-body.light footer { background:#f4f4f4; color:#111; text-shadow:none; }
+footer { text-align:center; padding:25px 10px; color:#b36b00; background:#0b0b0b; font-size:0.9em; box-shadow:0 -3px 8px rgba(179,107,0,0.3); text-shadow:0 0 4px #b36b00; }
+body.light footer { background:#f4f4f4; color:#b36b00; text-shadow:none; box-shadow:0 -3px 8px rgba(179,107,0,0.2); }
 
-/* RESPONSIVE */
-@media(max-width:768px){ .hero-header h1{font-size:2.4em;} }
+/* LIGHT MODE */
+body.light { background:#f4f4f4; color:#111; }
+body.light .navbar { background:rgba(255,255,255,0.9); }
+body.light .nav-list { background:#fff; }
+body.light .nav-list a { color:#b36b00; text-shadow:none; }
+body.light .nav-list a:hover { color:#ff9c3b; text-shadow:none; }
+body.light .hero-header { background:linear-gradient(135deg,#fff,#ddd); }
 </style>
 </head>
 
@@ -116,14 +94,16 @@ body.light footer { background:#f4f4f4; color:#111; text-shadow:none; }
 
 <!-- NAVBAR -->
 <nav class="navbar">
-  <div class="logo">
-    <img src="https://str8flight.github.io/str8flight-logo.png" alt="Logo">
+  <div class="logo-container">
+    <img src="https://str8flight.github.io/str8flight-logo.png" alt="Logo" class="logo">
     <span>Str8 Flight</span>
-    <img src="https://str8flight.github.io/belize-flag.png" class="flag" alt="Belize Flag">
-    <i class="fas fa-sun" id="theme-toggle"></i>
+    <div class="flag-toggle">
+      <img src="https://str8flight.github.io/belize-flag.png" class="flag">
+      <i class="fas fa-sun" id="theme-toggle"></i>
+    </div>
   </div>
 
-  <div class="menu-toggle" id="menuBtn"><span></span><span></span><span></span></div>
+  <div class="menu-toggle" id="hamburger"><span></span><span></span><span></span></div>
 
   <ul class="nav-list">
     <li><a href="index.html">Home</a></li>
@@ -135,7 +115,7 @@ body.light footer { background:#f4f4f4; color:#111; text-shadow:none; }
 
 <!-- HERO -->
 <header class="hero-header">
-  <div id="particles"></div>
+  <div class="particles" id="particles"></div>
   <h1>Our Services</h1>
   <p>Professional music production & studio services to elevate your sound</p>
 </header>
@@ -158,40 +138,30 @@ body.light footer { background:#f4f4f4; color:#111; text-shadow:none; }
 <footer>&copy; 2025 Str8 Flight Entertainment • Belize</footer>
 
 <script>
-/* MOBILE NAV */
-document.getElementById('menuBtn').onclick = () => {
-  document.querySelector('.nav-list').classList.toggle('active');
-};
+// Hamburger toggle
+document.getElementById('hamburger').addEventListener('click',()=>{ document.querySelector('.nav-list').classList.toggle('active'); });
 
-/* PARTICLES */
+// Particles
 const particles = document.getElementById('particles');
 for(let i=0;i<60;i++){
-  const div=document.createElement('div');
-  div.style.left=Math.random()*100+'%';
-  div.style.top=Math.random()*100+'%';
-  div.style.width=2+Math.random()*4+'px';
-  div.style.height=2+Math.random()*4+'px';
-  div.style.animationDuration=5+Math.random()*10+'s';
-  particles.appendChild(div);
+  const dot=document.createElement('span');
+  dot.style.left=Math.random()*100+'%';
+  dot.style.top=Math.random()*100+'%';
+  dot.style.width=2+Math.random()*4+'px';
+  dot.style.height=2+Math.random()*4+'px';
+  dot.style.animationDuration=5+Math.random()*10+'s';
+  particles.appendChild(dot);
 }
 
-/* SCROLL REVEAL */
+// Scroll reveal
 const cards=document.querySelectorAll('.service-card');
-const revealCards=()=>{const trigger=window.innerHeight*0.85;cards.forEach(c=>{if(c.getBoundingClientRect().top<trigger)c.classList.add('visible');});};
+const revealCards=()=>{ const trigger=window.innerHeight*0.85; cards.forEach(card=>{ if(card.getBoundingClientRect().top<trigger) card.classList.add('visible'); }); };
 window.addEventListener('scroll',revealCards);
 revealCards();
 
-/* DARK/LIGHT MODE */
-const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
-themeToggle.onclick = () => {
-  body.classList.toggle('light');
-  body.classList.toggle('dark');
-  localStorage.setItem('theme', body.classList.contains('light')?'light':'dark');
-};
-const savedTheme = localStorage.getItem('theme');
-if(savedTheme==='light') body.classList.add('light');
-else body.classList.add('dark');
+// Dark/Light mode
+const modeToggle=document.getElementById('theme-toggle');
+modeToggle.addEventListener('click',()=>{ document.body.classList.toggle('light'); document.body.classList.toggle('dark'); });
 </script>
 
 </body>
