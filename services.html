@@ -4,8 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Services | Str8 Flight Entertainment</title>
+
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1435942574271393" crossorigin="anonymous"></script>
 
 <style>
 /* ================= GLOBAL ================= */
@@ -26,9 +33,7 @@ a { text-decoration:none; transition: color 0.3s; }
 body.light .navbar { background: rgba(255,255,255,0.85); box-shadow:0 0 20px rgba(179,107,0,0.1); }
 
 /* LOGO + FLAG WRAPPER */
-.logo-wrapper {
-  display:flex; align-items:center; gap:10px;
-}
+.logo-wrapper { display:flex; align-items:center; gap:10px; }
 .logo-wrapper .logo { display:flex; align-items:center; gap:8px; }
 .logo-wrapper .logo img { width:50px; }
 .logo-wrapper .logo span { font-family:'Montserrat', sans-serif; font-weight:700; font-size:1.3em; background:linear-gradient(90deg,#b36b00,#ff9c3b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:0 0 6px #b36b00;}
@@ -62,8 +67,9 @@ body.light .nav-list a { color:#b36b00; text-shadow:none; }
   .nav-list li { border-bottom:1px solid rgba(179,107,0,.4); }
   body.light .nav-list li { border-bottom:1px solid rgba(179,107,0,.3); }
   .nav-list li a { padding:12px 20px; display:block; }
+  .logo-wrapper { flex-direction:row; }
 }
-  
+
 /* ================= HERO ================= */
 .hero-header {
   position:relative; height:50vh; text-align:center; display:flex; flex-direction:column; justify-content:center; align-items:center;
@@ -102,7 +108,7 @@ body.light .service-card p { color:#111; }
 
 /* ================= FOOTER ================= */
 footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px; font-size:0.9em; box-shadow:0 -3px 8px rgba(179,107,0,0.3); text-shadow:0 0 4px #b36b00; }
-body.light footer { background:#f4f4f4; color:#b36b00; text-shadow:none; box-shadow:0 -3px 8px rgba(179,107,0,.2); }
+body.light footer { background:#f4f4f4; color:#b36b00; text-shadow:none; box-shadow:0 -3px 8px rgba(179,107,0,0.2); }
 
 /* ================= RESPONSIVE ================= */
 @media(max-width:768px){ .hero-header h1{font-size:2.4em;} }
@@ -143,55 +149,20 @@ body.light footer { background:#f4f4f4; color:#b36b00; text-shadow:none; box-sha
 
 <!-- SERVICES CARDS -->
 <div class="services-container" id="services">
-  <div class="service-card">
-    <h3>Dub Plate</h3>
-    <p>Custom dub plates for artists, DJs, and events. High-quality recordings with unique vocal drops and professional sound mastering.</p>
-  </div>
-  <div class="service-card">
-    <h3>Mixing & Mastering</h3>
-    <p>Polish your tracks with professional mixing and mastering. Ensure your music sounds clear, balanced, and ready for release across all platforms.</p>
-  </div>
-  <div class="service-card">
-    <h3>Studio Recording</h3>
-    <p>Access a full-featured recording studio with experienced engineers. Capture vocals and instruments with top-quality equipment.</p>
-  </div>
-  <div class="service-card">
-    <h3>Vocal Recording & Editing</h3>
-    <p>Professional vocal tracking, tuning, and layering to make your voice shine in every project.</p>
-  </div>
-  <div class="service-card">
-    <h3>Songwriting & Arrangement</h3>
-    <p>Assist artists in crafting lyrics, melodies, and song structures for a polished final product.</p>
-  </div>
-  <div class="service-card">
-    <h3>Artist Development & Coaching</h3>
-    <p>Guidance on branding, performance, and music marketing to help you grow as an artist.</p>
-  </div>
-  <div class="service-card">
-    <h3>Live Session Recording</h3>
-    <p>Record live instruments or band sessions in the studio for high-quality audio capture.</p>
-  </div>
-  <div class="service-card">
-    <h3>Promotional Content Creation</h3>
-    <p>Short videos, teasers, and social media content for your releases to engage your audience.</p>
-  </div>
-  <div class="service-card">
-    <h3>Custom Dubplates & Vinyl Cuts</h3>
-    <p>Personalized tracks for DJs and events. Make your music unique and memorable.</p>
-  </div>
-  <div class="service-card">
-    <h3>Podcast & Voiceover Recording</h3>
-    <p>Professional audio production for podcasts, commercials, and voiceover work.</p>
-  </div>
-  <div class="service-card">
-    <h3>Remote Collaboration Services</h3>
-    <p>Work with our studio online from anywhere in the world to produce music seamlessly.</p>
-  </div>
+  <div class="service-card"><h3>Dub Plate</h3><p>Custom dub plates for artists, DJs, and events. High-quality recordings with unique vocal drops and professional sound mastering.</p></div>
+  <div class="service-card"><h3>Mixing & Mastering</h3><p>Polish your tracks with professional mixing and mastering. Ensure your music sounds clear, balanced, and ready for release across all platforms.</p></div>
+  <div class="service-card"><h3>Studio Recording</h3><p>Access a full-featured recording studio with experienced engineers. Capture vocals and instruments with top-quality equipment.</p></div>
+  <div class="service-card"><h3>Vocal Recording & Editing</h3><p>Professional vocal tracking, tuning, and layering to make your voice shine in every project.</p></div>
+  <div class="service-card"><h3>Songwriting & Arrangement</h3><p>Assist artists in crafting lyrics, melodies, and song structures for a polished final product.</p></div>
+  <div class="service-card"><h3>Artist Development & Coaching</h3><p>Guidance on branding, performance, and music marketing to help you grow as an artist.</p></div>
+  <div class="service-card"><h3>Live Session Recording</h3><p>Record live instruments or band sessions in the studio for high-quality audio capture.</p></div>
+  <div class="service-card"><h3>Promotional Content Creation</h3><p>Short videos, teasers, and social media content for your releases to engage your audience.</p></div>
+  <div class="service-card"><h3>Custom Dubplates & Vinyl Cuts</h3><p>Personalized tracks for DJs and events. Make your music unique and memorable.</p></div>
+  <div class="service-card"><h3>Podcast & Voiceover Recording</h3><p>Professional audio production for podcasts, commercials, and voiceover work.</p></div>
+  <div class="service-card"><h3>Remote Collaboration Services</h3><p>Work with our studio online from anywhere in the world to produce music seamlessly.</p></div>
 </div>
 
-<footer>
-  &copy; 2025 Str8 Flight Entertainment • Belize
-</footer>
+<footer>&copy; 2025 Str8 Flight Entertainment • Belize</footer>
 
 <script>
 // Hamburger toggle
@@ -222,32 +193,24 @@ const revealCards = () => {
 window.addEventListener('scroll',revealCards);
 revealCards();
 
-// ================= LIGHT/DARK MODE WITH PERSISTENCE =================
+// Dark/Light mode with persistence
 const modeToggle = document.getElementById('modeToggle');
-const body = document.body;
-const darkIcon = 'fas fa-moon';
-const lightIcon = 'fas fa-sun';
+modeToggle.addEventListener('click', () => {
+  const isLight = !document.body.classList.contains('light');
+  document.body.classList.toggle('light', isLight);
+  document.body.classList.toggle('dark', !isLight);
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
 
-function setTheme(isLight){
-  if(isLight){
-    body.classList.add('light');
-    body.classList.remove('dark');
-    modeToggle.className = lightIcon;
-    localStorage.setItem('theme','light');
-  }else{
-    body.classList.add('dark');
-    body.classList.remove('light');
-    modeToggle.className = darkIcon;
-    localStorage.setItem('theme','dark');
-  }
-}
-
-// Load saved theme
+// Apply saved theme
 const savedTheme = localStorage.getItem('theme');
-setTheme(savedTheme==='light');
-
-// Toggle theme on click
-modeToggle.addEventListener('click',()=> setTheme(!body.classList.contains('light')));
+if(savedTheme==='light'){
+  document.body.classList.add('light');
+  document.body.classList.remove('dark');
+}else{
+  document.body.classList.add('dark');
+  document.body.classList.remove('light');
+}
 </script>
 
 </body>
