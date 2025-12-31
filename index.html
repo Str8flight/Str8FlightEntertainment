@@ -184,7 +184,7 @@ for(let i=0;i<70;i++){
   particles.appendChild(dot);
 }
 
-/* LIGHT/DARK MODE */
+/* LIGHT/DARK MODE WITH PERSISTENCE */
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 const darkIcon = 'fas fa-moon';
@@ -204,14 +204,14 @@ function setTheme(isLight){
   }
 }
 
-themeToggle.onclick = () => {
-  setTheme(!body.classList.contains('light'));
-};
-
+// Load saved theme
 const savedTheme = localStorage.getItem('theme');
 setTheme(savedTheme==='light');
 
-/* YOUTUBE LIVE CHECK (Serverless API) */
+// Toggle theme
+themeToggle.onclick = () => setTheme(!body.classList.contains('light'));
+
+/* YOUTUBE LIVE CHECK */
 const CHANNEL_ID="UCp2UwspaBTvuEDMe9kx3aoA";
 const videosContainer = document.getElementById('videos');
 
@@ -246,9 +246,8 @@ function checkLive() {
     .catch(err => console.error("Error checking live status:", err));
 }
 
-// Initial check
+// Initial check + refresh every 30s
 checkLive();
-// Refresh every 30 seconds
 setInterval(checkLive, 30000);
 </script>
 
