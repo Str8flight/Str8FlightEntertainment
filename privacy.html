@@ -9,175 +9,156 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* ===== THEME VARIABLES ===== */
+/* ================= THEME VARIABLES ================= */
 :root{
-  --bg-color:#0b0b0b;
-  --text-color:#fff;
-  --accent-color:#b36b00;
+  --bg:#0b0b0b;
+  --bg-alt:#1a1a1a;
+  --text:#ffffff;
+  --accent:#b36b00;
   --accent-hover:#ff9c3b;
-  --card-bg:#1a1a1a;
 }
 
-/* ===== RESET ===== */
+body.light{
+  --bg:#f5f5f5;
+  --bg-alt:#ffffff;
+  --text:#111111;
+}
+
+/* ================= GLOBAL ================= */
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
   font-family:'Roboto',sans-serif;
-  background:var(--bg-color);
-  color:var(--text-color);
+  background:var(--bg);
+  color:var(--text);
   line-height:1.7;
   overflow-x:hidden;
+  transition:0.3s;
 }
-a{text-decoration:none}
+a{text-decoration:none;color:inherit;}
 
-/* ===== NAVBAR ===== */
+/* ================= NAVBAR ================= */
 .navbar{
   position:fixed;top:0;width:100%;z-index:100;
   display:flex;justify-content:space-between;align-items:center;
   padding:15px 20px;
-  background:rgba(0,0,0,.85);
-  backdrop-filter:blur(5px);
+  background:rgba(0,0,0,0.8);
+  backdrop-filter:blur(6px);
 }
-.logo{display:flex;align-items:center;gap:10px}
-.logo img{width:50px}
+body.light .navbar{background:rgba(255,255,255,0.9);}
 
-.menu-toggle{
-  display:none;
-  flex-direction:column;
-  cursor:pointer;
+.logo{
+  display:flex;align-items:center;gap:10px;
 }
-.menu-toggle span{
-  background:var(--accent-color);
-  height:3px;width:25px;margin:4px 0;
-}
-
-.nav-list{
-  list-style:none;
-  display:flex;
-  gap:25px;
-  align-items:center;
-}
-.nav-list li a{
-  color:var(--accent-color);
+.logo img{width:50px;}
+.logo span{
+  color:var(--text);
   font-weight:700;
-  transition:.3s;
+  font-size:1.1em;
 }
-.nav-list li a:hover{color:var(--accent-hover)}
 
-.theme-btn{
-  background:none;
-  border:none;
-  font-size:1.2em;
+/* TOGGLE */
+.theme-toggle{
   cursor:pointer;
-  color:var(--accent-color);
+  font-size:1.2em;
+  color:var(--accent);
 }
+
+/* MENU */
+.menu-toggle{display:none;flex-direction:column;cursor:pointer;}
+.menu-toggle span{background:var(--accent);height:3px;width:25px;margin:4px 0;}
+.nav-list{list-style:none;display:flex;gap:25px;}
+.nav-list a{color:var(--accent);font-weight:700;}
+.nav-list a:hover{color:var(--accent-hover);}
 
 @media(max-width:768px){
-  .menu-toggle{display:flex}
+  .menu-toggle{display:flex;}
   .nav-list{
-    position:absolute;
-    top:65px;right:0;
-    width:220px;
-    background:var(--bg-color);
+    position:absolute;top:65px;right:0;
+    background:var(--bg-alt);
     flex-direction:column;
-    max-height:0;
-    overflow:hidden;
-    transition:.3s;
-    border-radius:0 0 10px 10px;
-    box-shadow:0 0 15px var(--accent-color);
+    max-height:0;overflow:hidden;
+    width:220px;
+    transition:0.3s;
   }
-  .nav-list.active{max-height:500px}
-  .nav-list li{border-bottom:1px solid var(--accent-color)}
-  .nav-list li a{padding:12px 20px;display:block}
+  .nav-list.active{max-height:500px;}
+  .nav-list li{border-bottom:1px solid var(--accent);}
+  .nav-list a{padding:12px 20px;display:block;}
 }
 
-/* ===== HERO ===== */
+/* ================= HERO ================= */
 .hero-header{
   text-align:center;
   padding:120px 20px 50px;
-  background:linear-gradient(135deg,var(--bg-color),#1a1a1a);
+  background:linear-gradient(135deg,var(--bg),var(--bg-alt));
 }
 .hero-header h1{
   font-family:'Montserrat',sans-serif;
   font-size:3em;
-  color:var(--accent-color);
+  color:var(--accent);
 }
-.hero-header p{
-  max-width:600px;
-  margin:10px auto 0;
-}
+.hero-header p{max-width:600px;margin:10px auto;}
 
-/* ===== CONTENT ===== */
+/* ================= CONTENT ================= */
 .privacy-container{
   max-width:900px;
   margin:40px auto;
   padding:30px;
-  background:var(--card-bg);
+  background:var(--bg-alt);
   border-radius:16px;
-  box-shadow:0 0 20px var(--accent-color);
+  box-shadow:0 0 20px rgba(179,107,0,0.4);
 }
-.privacy-container h2{
-  color:var(--accent-color);
-  margin:25px 0 10px;
-}
-.privacy-container p{opacity:.9}
+.privacy-container h2{color:var(--accent);margin:20px 0 10px;}
 
-/* ===== FOOTER ===== */
+/* ================= FOOTER ================= */
 footer{
-  background:var(--bg-color);
-  color:var(--accent-color);
   text-align:center;
-  padding:25px 10px;
-  box-shadow:0 -3px 8px rgba(179,107,0,.3);
+  padding:20px;
+  color:var(--accent);
 }
 </style>
 </head>
 
 <body>
 
-<!-- ===== NAV ===== -->
 <nav class="navbar">
   <div class="logo">
-    <img src="https://str8flight.github.io/str8flight-logo.png" alt="Logo">
+    <img src="https://str8flight.github.io/str8flight-logo.png">
     <span>Str8 Flight</span>
   </div>
 
-  <div class="menu-toggle" id="mobile-menu">
+  <div class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon"></i>
+  </div>
+
+  <div class="menu-toggle" id="mobileMenu">
     <span></span><span></span><span></span>
   </div>
 
   <ul class="nav-list">
     <li><a href="index.html">Home</a></li>
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="index.html#videos">Videos</a></li>
     <li><a href="services.html">Services</a></li>
     <li><a href="contact.html">Contact</a></li>
     <li><a href="privacy.html">Privacy</a></li>
-    <li><button id="themeBtn" class="theme-btn">🌙</button></li>
   </ul>
 </nav>
 
-<!-- ===== HERO ===== -->
 <header class="hero-header">
   <h1>Privacy Policy</h1>
-  <p>How Str8 Flight Entertainment collects, uses, and protects your data.</p>
+  <p>Your privacy matters to us</p>
 </header>
 
-<!-- ===== CONTENT ===== -->
 <div class="privacy-container">
   <h2>Data Collection</h2>
-  <p>We may collect personal information such as your name and email when you submit forms.</p>
+  <p>We may collect personal information when you contact us.</p>
 
-  <h2>Usage of Information</h2>
-  <p>Your information is used solely to respond to inquiries and provide services.</p>
+  <h2>Usage</h2>
+  <p>Information is only used to respond to inquiries.</p>
 
   <h2>Cookies</h2>
-  <p>Cookies may be used to improve user experience. You can disable cookies in your browser.</p>
+  <p>Cookies may be used to improve experience.</p>
 
   <h2>Third-Party Services</h2>
-  <p>We use services like Google AdSense which may collect anonymous usage data.</p>
-
-  <h2>Security</h2>
-  <p>We apply standard security measures to protect your data.</p>
+  <p>Google services may collect anonymous data.</p>
 </div>
 
 <footer>
@@ -185,48 +166,19 @@ footer{
 </footer>
 
 <script>
-// Mobile menu
-const menu=document.getElementById('mobile-menu');
-const nav=document.querySelector('.nav-list');
-menu.onclick=()=>nav.classList.toggle('active');
+/* MOBILE MENU */
+mobileMenu.onclick=()=>document.querySelector('.nav-list').classList.toggle('active');
 
-// ===== DARK / LIGHT MODE =====
-const themeBtn=document.getElementById('themeBtn');
+/* THEME TOGGLE */
+const toggle=document.getElementById('themeToggle');
+const body=document.body;
 
-const dark={
-  '--bg-color':'#0b0b0b',
-  '--text-color':'#fff',
-  '--accent-color':'#b36b00',
-  '--accent-hover':'#ff9c3b',
-  '--card-bg':'#1a1a1a'
+if(localStorage.theme==="light") body.classList.add('light');
+
+toggle.onclick=()=>{
+  body.classList.toggle('light');
+  localStorage.theme=body.classList.contains('light')?'light':'dark';
 };
-const light={
-  '--bg-color':'#f5f5f5',
-  '--text-color':'#111',
-  '--accent-color':'#ff6f00',
-  '--accent-hover':'#ffa500',
-  '--card-bg':'#eee'
-};
-
-function setTheme(t){
-  for(let k in t){
-    document.documentElement.style.setProperty(k,t[k]);
-  }
-}
-
-function applyTheme(){
-  const mode=localStorage.getItem('theme')||'dark';
-  if(mode==='dark'){setTheme(dark);themeBtn.textContent='🌙'}
-  else{setTheme(light);themeBtn.textContent='☀️'}
-}
-
-themeBtn.onclick=()=>{
-  const mode=localStorage.getItem('theme')||'dark';
-  localStorage.setItem('theme',mode==='dark'?'light':'dark');
-  applyTheme();
-};
-
-applyTheme();
 </script>
 
 </body>
