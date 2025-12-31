@@ -4,17 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Str8 Flight Entertainment | Belize Music & Culture</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* ================= GLOBAL RESET ================= */
+/* RESET */
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Roboto',sans-serif; background:#0b0b0b; color:#fff; overflow-x:hidden; transition:0.3s; }
-a { text-decoration:none; }
-.light { background:#f2f2f2; color:#111; }
+body {
+  font-family:'Roboto',sans-serif;
+  background:#0b0b0b;
+  color:#fff;
+  overflow-x:hidden;
+  transition:0.3s;
+}
 
-/* ================= NAVBAR ================= */
+/* NAVBAR */
 .navbar {
   position:fixed;
   top:0; left:0;
@@ -28,8 +33,6 @@ a { text-decoration:none; }
   backdrop-filter:blur(8px);
   transition:0.3s;
 }
-
-body.light .navbar { background:rgba(255,255,255,0.85); }
 
 .logo {
   display:flex;
@@ -45,18 +48,29 @@ body.light .navbar { background:rgba(255,255,255,0.85); }
   background:linear-gradient(90deg,#b36b00,#ff9c3b);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
+  user-select:none;
 }
 
+.flag {
+  height:26px;
+  border-radius:4px;
+}
+
+/* MENU TOGGLE + LIGHT/DARK */
 .menu-toggle {
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:8px;
   cursor:pointer;
 }
 
-.menu-toggle i { font-size:1.3em; color:#b36b00; transition:0.3s; }
-body.light .menu-toggle i { color:#b36b00; }
+.menu-toggle i {
+  font-size:1.2em;
+  color:#b36b00;
+  transition:0.3s;
+}
 
+/* NAV LINKS */
 .nav-list {
   list-style:none;
   display:flex;
@@ -75,61 +89,40 @@ body.light .menu-toggle i { color:#b36b00; }
   text-shadow:0 0 12px #ff9c3b;
 }
 
-/* ================= MOBILE NAV ================= */
+/* MOBILE NAV */
 @media(max-width:768px){
   .nav-list {
-    position:fixed;
-    top:0;
-    right:-260px;
-    width:240px;
-    height:100vh;
-    background:linear-gradient(180deg,#0b0b0b,#1a1a1a);
+    position:absolute;
+    top:65px;
+    right:20px;
+    width:220px;
+    background:#111;
     flex-direction:column;
-    max-height:100%;
+    max-height:0;
     overflow:hidden;
-    transition:right 0.4s ease;
-    border-left:2px solid #b36b00;
+    transition:max-height .35s ease;
+    border-radius:0 0 12px 12px;
     box-shadow:0 0 30px rgba(179,107,0,.6);
-    z-index:999;
-    padding-top:70px;
   }
-  .nav-list.mobile-active { right:0; }
+
+  .nav-list.active { max-height:500px; }
 
   .nav-list li { border-bottom:1px solid rgba(179,107,0,.4); }
 
   .nav-list a {
-    padding:18px 24px;
+    padding:14px 20px;
     display:block;
-    font-size:1.1em;
-    color:#b36b00;
-    text-shadow:0 0 6px #b36b00;
-    transition: all 0.3s ease;
   }
-
-  .nav-list a:hover {
-    color:#ff9c3b;
-    text-shadow:0 0 16px #ff9c3b;
-    transform:scale(1.05);
-    background:rgba(179,107,0,0.1);
-    border-radius:8px;
-  }
-
-  body.light .nav-list { background:linear-gradient(180deg,#fff,#eee); border-left:2px solid #b36b00; }
-  body.light .nav-list a { color:#b36b00; text-shadow:0 0 2px #b36b00; }
-  body.light .nav-list a:hover { color:#ff9c3b; text-shadow:0 0 10px #ff9c3b; background:rgba(179,107,0,0.05); }
 }
 
-/* ================= HERO ================= */
+/* HERO */
 .hero-header {
   position:relative;
   padding:150px 20px 90px;
   text-align:center;
   background:linear-gradient(135deg,#0b0b0b,#161616);
   overflow:hidden;
-  transition:0.3s;
 }
-
-body.light .hero-header { background:linear-gradient(135deg,#fff,#ddd); }
 
 .hero-content { position:relative; z-index:3; }
 
@@ -141,14 +134,12 @@ body.light .hero-header { background:linear-gradient(135deg,#fff,#ddd); }
   animation:fadeDown 1.2s ease forwards;
 }
 
-body.light .hero-header h1 { text-shadow:none; color:#b36b00; }
+.hero-header p {
+  font-size:1.2em;
+  animation:fadeUp 1.4s ease forwards;
+}
 
-.hero-header p { font-size:1.2em; animation:fadeUp 1.4s ease forwards; }
-
-@keyframes fadeDown { from { opacity:0; transform:translateY(-30px); } to { opacity:1; transform:translateY(0); } }
-@keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
-
-/* ================= PARTICLES ================= */
+/* PARTICLES */
 .particles {
   position:absolute;
   inset:0;
@@ -172,7 +163,17 @@ body.light .hero-header h1 { text-shadow:none; color:#b36b00; }
   to { transform:translateY(-120vh); opacity:0; }
 }
 
-/* ================= PAGE LAYOUT ================= */
+@keyframes fadeDown {
+  from { opacity:0; transform:translateY(-30px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(30px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+/* PAGE LAYOUT */
 .page-container {
   max-width:1400px;
   margin:70px auto;
@@ -189,9 +190,9 @@ body.light .hero-header h1 { text-shadow:none; color:#b36b00; }
   transition:0.3s;
 }
 
-body.light .column { background:#f9f9f9; box-shadow:0 0 25px rgba(179,107,0,.2); }
-
-.column:hover { box-shadow:0 0 35px #b36b00,0 0 60px #8a4c00; }
+.column:hover {
+  box-shadow:0 0 35px #b36b00,0 0 60px #8a4c00;
+}
 
 .left { flex:1; }
 .center { flex:3; }
@@ -202,11 +203,9 @@ body.light .column { background:#f9f9f9; box-shadow:0 0 25px rgba(179,107,0,.2);
   text-shadow:0 0 8px #b36b00;
 }
 
-body.light .column h2 { text-shadow:none; color:#b36b00; }
-
 .column p { margin-bottom:15px; }
 
-/* ================= VIDEOS ================= */
+/* VIDEOS */
 .section-title {
   text-align:center;
   font-size:2.2em;
@@ -214,8 +213,6 @@ body.light .column h2 { text-shadow:none; color:#b36b00; }
   color:#b36b00;
   text-shadow:0 0 10px #b36b00;
 }
-
-body.light .section-title { text-shadow:none; color:#b36b00; }
 
 .videos {
   display:grid;
@@ -231,33 +228,60 @@ body.light .section-title { text-shadow:none; color:#b36b00; }
   transition:.3s;
 }
 
-body.light .video-card { background:#fff; box-shadow:0 0 12px #b36b00; }
+.video-card:hover {
+  box-shadow:0 0 30px #b36b00,0 0 50px #8a4c00;
+}
 
-.video-card:hover { box-shadow:0 0 30px #b36b00,0 0 50px #8a4c00; }
+iframe {
+  width:100%;
+  height:260px;
+  border:none;
+  border-radius:12px;
+}
 
-iframe { width:100%; height:260px; border:none; border-radius:12px; }
+.video-title {
+  margin-top:10px;
+  text-align:center;
+  font-weight:700;
+  text-shadow:0 0 5px #b36b00;
+}
 
-.video-title { margin-top:10px; text-align:center; font-weight:700; text-shadow:0 0 5px #b36b00; }
+/* YOUTUBE LIVE */
+#live-stream { display:none; margin-bottom:30px; }
+#live-stream.show { display:block; }
 
-body.light .video-title { text-shadow:none; color:#b36b00; }
+/* FOOTER */
+footer {
+  text-align:center;
+  padding:30px;
+  color:#b36b00;
+  background:#0b0b0b;
+  margin-top:70px;
+}
 
-/* ================= FOOTER ================= */
-footer { text-align:center; padding:30px; color:#b36b00; background:#0b0b0b; margin-top:70px; }
+/* DARK/LIGHT */
+body.light { background:#f4f4f4; color:#111; }
+body.light .navbar { background:rgba(255,255,255,0.85); }
+body.light .nav-list a { color:#ff9c00; text-shadow:none; }
+body.light .nav-list a:hover { color:#ff6600; }
+body.light .column { background:#f0f0f0; box-shadow:0 0 25px rgba(255,102,0,.3); }
+body.light .column:hover { box-shadow:0 0 35px #ff9c00,0 0 60px #ff9900; }
+body.light .video-card { background:#fff; box-shadow:0 0 18px #ff9c00; }
+body.light .video-card:hover { box-shadow:0 0 30px #ff9c00,0 0 50px #ff9900; }
 
-body.light footer { background:#f2f2f2; color:#b36b00; }
-
-/* ================= RESPONSIVE ================= */
 @media(max-width:1024px){ .page-container { flex-direction:column; } }
 @media(max-width:768px){ iframe { height:200px; } }
+
 </style>
 </head>
+
 <body>
 
 <nav class="navbar">
   <div class="logo">
     <img src="str8flight-logo.png" alt="Logo">
     <span>STR8 FLIGHT</span>
-    <img src="belize-flag.png" class="flag">
+    <img src="belize-flag.png" class="flag" alt="Belize Flag">
   </div>
 
   <div class="menu-toggle" id="menuBtn">
@@ -295,6 +319,11 @@ body.light footer { background:#f2f2f2; color:#b36b00; }
   <div class="column center">
     <h2 class="section-title">Featured Music Videos</h2>
 
+    <!-- LIVE STREAM -->
+    <div id="live-stream">
+      <iframe id="liveFrame" width="100%" height="260" allowfullscreen></iframe>
+    </div>
+
     <div class="videos" id="videos">
       <div class="video-card"><iframe src="https://www.youtube.com/embed/0QwKo-mssxc"></iframe><div class="video-title">Perry da Artist - Bad Freak</div></div>
       <div class="video-card"><iframe src="https://www.youtube.com/embed/pInxfriRH_w"></iframe><div class="video-title">Mr. Program - Rise-in-Glory</div></div>
@@ -313,12 +342,12 @@ body.light footer { background:#f2f2f2; color:#b36b00; }
 </footer>
 
 <script>
-// MOBILE NAV
+/* MOBILE NAV */
 document.getElementById('menuBtn').onclick = () => {
-  document.querySelector('.nav-list').classList.toggle('mobile-active');
+  document.querySelector('.nav-list').classList.toggle('active');
 };
 
-// PARTICLES
+/* PARTICLES */
 const particles = document.getElementById('particles');
 for(let i=0;i<70;i++){
   const dot = document.createElement('span');
@@ -328,38 +357,34 @@ for(let i=0;i<70;i++){
   particles.appendChild(dot);
 }
 
-// LIGHT/DARK TOGGLE
-const body = document.body;
-const lightIcon = document.getElementById('lightIcon');
-const darkIcon = document.getElementById('darkIcon');
-
-document.getElementById('menuBtn').addEventListener('click', () => {
-  if(body.classList.contains('light')){
-    body.classList.remove('light');
-    lightIcon.style.display = 'inline';
-    darkIcon.style.display = 'none';
-  } else {
-    body.classList.add('light');
-    lightIcon.style.display = 'none';
-    darkIcon.style.display = 'inline';
-  }
-});
-
-// YOUTUBE LIVE CHECK
-const CHANNEL_ID = "UCp2UwspaBTvuEDMe9kx3aoA"; // your channel ID
+/* YOUTUBE LIVE CHECK */
+const CHANNEL_ID = "UCp2UwspaBTvuEDMe9kx3aoA";
 fetch(`https://str8flight-live-api.vercel.app/api/live?channelId=${CHANNEL_ID}`)
 .then(r => r.json())
 .then(d => {
   if(d.live && d.videoId){
-    // Create a live embed at the top
-    const liveSection = document.createElement('div');
-    liveSection.innerHTML = `
-      <h2 style="text-align:center;color:#ff3b3b;margin:20px 0;">LIVE NOW</h2>
-      <iframe id="liveFrame" src="https://www.youtube.com/embed/${d.videoId}?autoplay=1" width="100%" height="360" frameborder="0" allowfullscreen></iframe>
-    `;
-    document.body.insertBefore(liveSection, document.querySelector('.page-container'));
+    document.getElementById('liveFrame').src = `https://www.youtube.com/embed/${d.videoId}?autoplay=1`;
+    document.getElementById('live-stream').classList.add('show');
   }
 });
+
+/* LIGHT/DARK MODE TOGGLE */
+const lightIcon = document.getElementById('lightIcon');
+const darkIcon = document.getElementById('darkIcon');
+
+const toggleTheme = () => {
+  document.body.classList.toggle('light');
+  if(document.body.classList.contains('light')){
+    lightIcon.style.display = 'none';
+    darkIcon.style.display = 'inline';
+  } else {
+    lightIcon.style.display = 'inline';
+    darkIcon.style.display = 'none';
+  }
+};
+
+lightIcon.parentElement.onclick = toggleTheme;
+darkIcon.parentElement.onclick = toggleTheme;
 </script>
 
 </body>
