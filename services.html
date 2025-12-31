@@ -62,9 +62,6 @@ body.light .nav-list a { color:#b36b00; text-shadow:none; }
   .nav-list li { border-bottom:1px solid rgba(179,107,0,.4); }
   body.light .nav-list li { border-bottom:1px solid rgba(179,107,0,.3); }
   .nav-list li a { padding:12px 20px; display:block; }
-
-  /* Keep logo + flag in a row and close to text */
-  .logo-wrapper { flex-direction:row; }
 }
   
 /* ================= HERO ================= */
@@ -105,7 +102,7 @@ body.light .service-card p { color:#111; }
 
 /* ================= FOOTER ================= */
 footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px; font-size:0.9em; box-shadow:0 -3px 8px rgba(179,107,0,0.3); text-shadow:0 0 4px #b36b00; }
-body.light footer { background:#f4f4f4; color:#b36b00; text-shadow:none; box-shadow:0 -3px 8px rgba(179,107,0,0.2); }
+body.light footer { background:#f4f4f4; color:#b36b00; text-shadow:none; box-shadow:0 -3px 8px rgba(179,107,0,.2); }
 
 /* ================= RESPONSIVE ================= */
 @media(max-width:768px){ .hero-header h1{font-size:2.4em;} }
@@ -225,12 +222,32 @@ const revealCards = () => {
 window.addEventListener('scroll',revealCards);
 revealCards();
 
-// Dark/Light mode
+// ================= LIGHT/DARK MODE WITH PERSISTENCE =================
 const modeToggle = document.getElementById('modeToggle');
-modeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('light');
-  document.body.classList.toggle('dark');
-});
+const body = document.body;
+const darkIcon = 'fas fa-moon';
+const lightIcon = 'fas fa-sun';
+
+function setTheme(isLight){
+  if(isLight){
+    body.classList.add('light');
+    body.classList.remove('dark');
+    modeToggle.className = lightIcon;
+    localStorage.setItem('theme','light');
+  }else{
+    body.classList.add('dark');
+    body.classList.remove('light');
+    modeToggle.className = darkIcon;
+    localStorage.setItem('theme','dark');
+  }
+}
+
+// Load saved theme
+const savedTheme = localStorage.getItem('theme');
+setTheme(savedTheme==='light');
+
+// Toggle theme on click
+modeToggle.addEventListener('click',()=> setTheme(!body.classList.contains('light')));
 </script>
 
 </body>
