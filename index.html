@@ -12,12 +12,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+/* ===== GLOBAL ===== */
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Roboto',sans-serif;background:#0b0b0b;color:#fff;overflow-x:hidden;transition:0.3s;scroll-behavior:smooth;}
 body.light{background:#f4f4f4;color:#111;}
 a{text-decoration:none;color:inherit;}
 
-/* NAVBAR */
+/* ===== NAVBAR ===== */
 .navbar{position:fixed;top:0;width:100%;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:15px 24px;background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);transition:.3s;}
 body.light .navbar{background:rgba(255,255,255,0.9);}
 .logo{display:flex;align-items:center;gap:10px;}
@@ -29,7 +30,6 @@ body.light .navbar{background:rgba(255,255,255,0.9);}
 .nav-list a{color:#b36b00;font-weight:700;}
 .menu-toggle{display:none;flex-direction:column;cursor:pointer;}
 .menu-toggle span{width:26px;height:3px;background:#b36b00;margin:4px 0;}
-
 @media(max-width:768px){
   .menu-toggle{display:flex;}
   .nav-list{
@@ -40,7 +40,7 @@ body.light .navbar{background:rgba(255,255,255,0.9);}
   .nav-list li a{padding:14px 20px;display:block;}
 }
 
-/* HERO */
+/* ===== HERO ===== */
 .hero-header{position:relative;padding:100px 20px 40px;text-align:center;background:linear-gradient(135deg,#0b0b0b,#161616);overflow:hidden;transition:.3s;}
 body.light .hero-header{background:linear-gradient(135deg,#fff,#ddd);}
 .hero-header h1{font-family:'Montserrat',sans-serif;font-size:3em;margin-bottom:10px;text-shadow:0 0 14px #b36b00;}
@@ -49,7 +49,7 @@ body.light .hero-header{background:linear-gradient(135deg,#fff,#ddd);}
 .particles span{position:absolute;width:6px;height:6px;background:#b36b00;border-radius:50%;opacity:.7;animation:floatUp linear infinite;}
 @keyframes floatUp{from{transform:translateY(100vh);}to{transform:translateY(-120vh);}}
 
-/* NEW RELEASE */
+/* ===== NEW RELEASE ===== */
 .new-release{
   max-width:1400px;
   margin:30px auto;
@@ -83,7 +83,7 @@ body.light .hero-header{background:linear-gradient(135deg,#fff,#ddd);}
   font-weight:700;
 }
 
-/* LIGHT MODE FOR NEW RELEASE */
+/* Light/Dark styles for New Release */
 body.light .new-release{
   background: linear-gradient(135deg,#fff,#eee);
   color: #111;
@@ -96,7 +96,7 @@ body.light .new-release-card{
 
 @media(max-width:768px){.new-release-card iframe{height:220px;}}
 
-/* LIVE SECTION */
+/* ===== LIVE SECTION ===== */
 .live-section{max-width:1400px;margin:30px auto;padding:20px;display:none;}
 body.light .live-section{background:#fff;color:#111;}
 .video-card{background:#0f0f0f;padding:18px;border-radius:16px;}
@@ -105,7 +105,7 @@ body.light .video-card{background:#fff;color:#111;}
 .video-title{text-align:center;margin-top:10px;font-weight:700;}
 @media(max-width:768px){iframe{height:200px;}}
 
-/* PAGE CONTENT */
+/* ===== PAGE CONTENT ===== */
 .page-container{max-width:1400px;margin:40px auto;padding:0 20px;display:flex;gap:40px;flex-wrap:wrap;}
 .column{background:#141414;padding:30px;border-radius:18px;}
 body.light .column{background:#fff;color:#111;}
@@ -223,9 +223,7 @@ videosList.forEach(v=>{
 });
 
 // ===== NEW RELEASE =====
-// CHANGE THIS to your Vercel deployed URL for latestvideo.js
-const latestVideoEndpoint = 'https://str8flight-latestvideo.vercel.app/api/latestvideo';
-
+const latestVideoEndpoint = 'https://str8flight-live-api.vercel.app/api/latestvideo';
 fetch(latestVideoEndpoint)
 .then(res=>res.json())
 .then(data=>{
